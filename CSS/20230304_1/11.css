@@ -1,0 +1,21 @@
+div {
+    display: block;
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+    cursor: pointer;
+    text-align: center;
+    line-height: 200px;
+    margin: 0 auto;
+    margin-top: calc(50vh - 100px);
+
+    
+
+}
+
+div:hover {
+
+    display: none;
+    
+
+}

@@ -1,0 +1,35 @@
+.d-block {
+    /* div는 display: block 기본적으로 가지고 있음 */
+    display: block;
+    background-color: blueviolet;
+    border: 1px solid black;
+    width: 50px;
+    height: 50px;
+    padding: 30px;
+    margin: 20px;
+}
+
+.d-inline {
+    /* spam */
+    display: inline;
+    background-color: red;
+    border: 1px solid blue;
+    width: 50px;
+    height: 50px;
+    margin: 20px;
+    /* 적용은 안되나 배경색만 패딩이 적용됨, 인라인에서 패딩 쓰는 의미는 없음 */
+    /* padding: 30px; */
+}
+
+
+.d-inline-block {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    /* margin: 20px;
+    padding: 30px; */
+    padding: 10px 20px 30px 40px;
+    margin: 10px;
+
+}

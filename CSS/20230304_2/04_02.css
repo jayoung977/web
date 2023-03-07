@@ -1,0 +1,44 @@
+
+
+
+/* absolute 여서 겹치게 되고 z-index를 사용해서 하는 실습이었음 */
+
+.container > div {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+
+}
+
+.container {
+    background-color: bisque;
+    position: relative;
+    width: 500px;
+    height: 500px;
+}
+
+.item1 {
+  
+    background-color: aqua;
+    z-index: 5;
+
+
+ 
+}
+
+.item2 {
+
+    background-color: gray;
+    top: 30px;
+    left: 30px;
+    z-index: 5;
+   
+}
+.item3 {
+
+    background-color: purple;
+    top: 60px;
+    left: 60px;
+    z-index: 5;
+    
+}

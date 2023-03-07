@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* 사이즈 계산하기 쉽게 */
+    box-sizing: border-box;
+}
+a {
+    text-decoration: none;
+}
+ul,
+ol {
+    list-style: none;
+}
+/* common */
+.btn {
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 8px;
+    margin-left: 8px;
+    cursor: pointer;
+    line-height: 32px;
+}
+.btn-white {
+    color: #4A4A4A;
+    border: 1px solid #dbdbdb;
+    background-color: #fff;
+
+
+}
+.btn-red {
+    color: #fff;
+    border: 1px solid #dbdbdb;
+    background-color: #ff7867;
+}
+
+
+/* header */
+header {
+    /* background-color: aqua; */
+    width: 100%;
+    height: 65px;
+}
+header .inner {
+    /* background-color: azure; */
+    height: 100%;
+    max-width: 1200px;
+    /* 가운데 정렬 */
+    margin: auto;
+    display: flex;
+    /* menu left, right를 좌 우로 붙임 */
+    justify-content: space-between;
+    /* 메뉴 글씨들이 세로 가운데에 위치하게 */
+    align-items: center;
+    padding: 0 1rem;
+}
+/* menu-left */
+header .inner .menu-left {
+    display: flex;
+}
+header .inner .menu-left .logo {
+    margin-right: 10px;
+}
+header .inner .menu-left .logo a {
+    color: #1DC078;
+}
+header .inner .menu-left .menu {
+    display: flex;
+}
+header .inner .menu-left .menu li a {
+    color: #4A4A4A;
+    padding: 1rem;
+}
+header .inner .menu-left .menu li a:hover {
+    color: #1DC078;
+}
+
+
+header .inner .menu-right {
+    display: flex;
+} 
+header .inner .menu-right .header_search {
+    position: relative;
+
+} 
+header .inner .menu-right .header_search input{
+    width: 150px;
+    height: 40px;
+    border: 0.5px solid transparent;
+    font-size: 1rem;
+    padding: 0.5rem;
+    background-color: #f6f6f6;
+    border-radius: 3px;
+    color: #363636;
+} 
+
+header .inner .menu-right .header_search input:focus {
+    outline-color: #1DC078;
+}
+
+header .inner .menu-right .header_search input:hover {
+    border-color: #dbdbdb;
+}
+header .inner .menu-right .header_search i{
+    /* header_search에 relative */
+    position: absolute;
+    right: 10px;
+    /* 중앙 정렬 */
+    top: 50%;
+    transform: translateY(-50%);
+
+} 

@@ -1,0 +1,53 @@
+body{
+    height: 2000px;
+}
+.box {
+    display: inline-block;
+    width: 300px;
+    height: 500px;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+.background{
+    /* background:  color image repeat position; 따로 쓰는 걸 추천 단축속성보다 */
+    background-color: aqua;
+    background: palegreen;
+    background: linear-gradient( black, tomato);
+    /* background: linear-gradient(90deg, black, tomato);
+    background: linear-gradient(to right, black, tomato);
+    background: linear-gradient(to top, black, tomato); */
+    /* background: linear-gradient(to bottom, black, tomato); */
+}
+
+.background-image {
+    background-image: url(./img/small_img.png);
+
+    /*1. background-repeat*/ 
+    background-repeat: repeat; /*디폴트*/ 
+    background-repeat: repeat-x;  /*x축으로 반복*/ 
+    background-repeat: repeat-y;
+    background-repeat: no-repeat;
+
+    /*2. background-position */
+    background-position: center top;
+    background-position: 10px 10px;
+    background-position: 10px; /*단축 적용 안됨 1개 쓰면 왼쪽(x축)만 변화됨 */ 
+    background-position: center;
+    background-position: left top;
+
+    /*2. background-size */
+    background-size:auto; /*디폴트*/ 
+    background-size:50px; /*1개 쓰면 가로가 50px, 세로는 비율을 유지하며 작아짐 */ 
+    background-size:100px 50px; /* x, y 축 변화*/ 
+    background-size:cover; /*자주 사용- 사진의 긴축에 맞춰서 잘림, */ 
+    background-size:contain; /*자주 사용- 사진의 짧은축에 맞춤-잘리지 않는 가장 큰 사이즈*/
+    
+
+    /*3. background-attachment */
+
+    background-attachment: scroll;/*디폴트*/ 
+    background-attachment: fixed;/*스크롤 해도 안움직임*/
+
+
+
+}

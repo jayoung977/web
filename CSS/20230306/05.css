@@ -1,0 +1,33 @@
+.box {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    background-color: black;
+    transition: 2s 1s; 
+}
+
+
+.box1:hover{
+    background-color: pink;
+    height: 120px;
+    width: 120px;
+    /* transition 
+    
+    - transition duration: 필수 값!!!! */
+    transition-duration: 1s;
+
+    transition-timing-function: linear; /*일정한 속도로 변화*/
+    transition-timing-function: ease; /*기본값*/
+    
+    transition-delay: 2s;
+}
+.box2:hover{
+    transform: translateX(50px) scaleX(2);
+    height: 120px;
+    /* 단축속성 */
+    /* transition: property duration(필수 값) function delay; */
+    transition: height .5s ease 2s; 
+}
+.box3:hover{
+    opacity: 0;
+}

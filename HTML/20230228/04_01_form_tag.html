@@ -1,0 +1,116 @@
+<!-- 
+    사용자 입력 form 태그
+    form태그는 구글폼같은걸 의미함
+    사용자의 정보를 입력해서 서버로 전송 
+    완벽 이해를 위해서는 백앤드 지식 필요
+    어떤 태그를 안에 쓸 수 있는지 정도 배울 예정
+    <input> 열린 태그 type값으로 여러 button, 등 사용
+    button: 버튼 생성, 주로 특정 기능 수행
+    text: 가장 기본값, id입력 부분
+    password:패스워드, 안보이게 처리함
+    checkbox, radio: 선택하는 기능 checkbox-여러개/radio-하나
+    name: 여러개를 선택가능한 체크박스 생성
+    date: 년,월,일 선택 
+
+    <select>:선택 메뉴를 만듧
+ -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form tag 종류에 대해서 알아보자</title>
+</head>
+<body>
+    <!-- 사바와 관련된 속성 -->
+    <!-- <form action="" method=""></form> -->
+    <form >
+        <label for="textInput">id</label>
+        <input type="text" id="textInput">
+        <br/>
+        <label for="pwd">비밀번호</label>
+        <input type="password" id="pwd"/>
+        <br/>
+        <!-- type="email": 이메일 형식 아니면 제출 안됨,이메일 형식이 아닙니다 문구띄워줌
+        placeholder: 회색 미리보기 글씨
+        value="say hi": 아예 값이 들어갑 -->
+        <input type="email" placeholder="~~.@gmail.com" value="say hi"> 
+        <br/>
+        <!-- textarea써야 여러줄 써짐 
+        placeholder="wanna go home"> 글 </textarea> 이면 글이라는 글씨 써짐 -->
+        <textarea cols="30" rows="10" placeholder="wanna go home"> </textarea>
+        <input type="color"/>
+        <input type="range"/>
+        <input type="file"/>
+        <!-- 숫자만 써짐 -->
+        <input type="number"/>
+        <input type="date"/>
+        <!-- 시간 까지 -->
+        <input type="datetime-local"/>
+
+
+
+        <hr/>
+        <h5>다음 중 input type이 아닌 것은?(모두 고르세요.)</h5>
+        <input type="checkbox" name="input"/>text
+        <input type="checkbox"name="input"/>bread
+        <input type="checkbox"name="input"/>date
+        <input type="checkbox"name="input"/>click
+        <input type="checkbox"name="input"/>image
+        <!-- name 속성있어야 한묶음 가능 , 백앤드에서 네임 속성이 중요-->
+
+
+        <h5>다음 중 img태그 속성인 것은?(하나만 가능)</h5>
+        <!-- <input type="radio" name="img"/>title
+        <input type="radio"name="img"/>alt
+        <input type="radio"name="img"/>date
+        <input type="radio"name="img"/>value
+        <input type="radio"name="img"/>href
+        name 속성없으면 모두 고르기가 가능함 -->
+
+        <input type="radio" name="img" id="title"/><label for="title">title</label>
+        <input type="radio" name="img"id="alt"/><label for="alt">alt</label>
+        <input type="radio" name="img"id="date"/><label for="date">date</label>
+        <input type="radio" name="img"id="value"/><label for="value">value</label>
+        <input type="radio" name="img"id="href"/><label for="href">href</label>
+        
+    
+        <!-- id="href" 아이디 값은 고유해야ㅕ함 ,글자 눌러도 선택됨 , 근데 왜 안되냐-->
+
+        <br/>
+
+        <input type="button" value="버튼">
+        <!-- value="buttom"으로 글씨 쓸 수 있음 -->
+        <input type="submit" value="제출">
+        <!-- 새로고침 -->
+        <!-- <button><span style="color:red;"></span>버튼</button> -->
+        <!-- 새로고침 제출+버튼, 속성 부여 가능-->
+
+        <!-- 속성 disabled ,checked-->
+        <input type="checkbox"name="input" checked/>click
+        <input type="checkbox"name="input" disabled/>image
+
+        <hr/>
+        <select name="flower">
+            <optgroup label="red flower">
+                <option>장미</option>
+                <option>동백꽃</option>
+                <option>튤립</option>
+            </optgroup>
+            <optgroup label="white flower">
+                <option>벚꽃</option>
+                <option>목련</option>
+                <option>매화</option>
+            </optgroup>
+        </select>
+
+        <!-- 서버 제출 방법은 백앤드에서 배움 -->
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+</body>
+</html>

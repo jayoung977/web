@@ -1,0 +1,23 @@
+
+.square {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    border: 1px solid gray;
+}
+.d-none {
+    /* display: none; */
+    background-color: red;
+   }
+.invisible {
+    /* visibility: hidden; */
+    background-color: orangered;
+    }
+.opacity-0 {
+    /* opacity: 0; */
+    background-color: tomato;
+    /* 글씨를 투명하게 만들어줌 */
+    opacity: 0.5;
+    }
+

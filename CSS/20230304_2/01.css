@@ -1,0 +1,53 @@
+
+/* <div class="position-static">static</div>
+<div class="position-relative">relative</div>
+<div class="position-absolute">absolute</div>
+<div class="position-fixed">fixed</div>
+<div class="position-relative">relative</div> */
+
+body {
+    height: 2000px;
+    background: linear-gradient(white, orange);
+}
+div {
+    width: 100px;
+    height: 100px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 100px;
+}
+
+
+.position-static {
+    background-color: pink;
+    /* 적용 안됨 */
+    position: static;
+    top: 100px;
+    left: 50px;
+}
+/* relative는 문서 흐름을 해치치 않아서 이를 이용해서(부모로해서) 이동시킴 */
+.position-relative{
+    background-color: aqua;
+    position: relative;
+    top: 100px;
+    left: 100px;
+    
+}
+.position-absolute {
+    background-color: gold;
+    opacity: 0.3;
+    position: absolute;
+    top: 50px; 
+    left: 0px;
+}
+
+/* 뷰포트 기준이어서 움직여도 고정됨 */
+.position-fixed{
+    background-color: brown;
+
+    /* opacity: 0.3; */
+    position: fixed;
+    width: 100%;
+    top: 0px; 
+    left: 0px;
+}

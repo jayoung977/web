@@ -1,0 +1,26 @@
+.square {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    border: 1px solid gray;
+}
+
+.rounded {
+    background-color: thistle;
+    border-radius: 10px;
+    border-radius: 10px 40px;
+    border-radius: 10px 20px 40px;
+    border-radius: 5px 20px 30px 40px;
+    border-radius: 10%;
+    /* 50%원 */
+    border-radius: 50%;
+    border-radius: 50px;
+}
+
+
+/* work */
+.rounded {
+    background-color: thistle;
+    border-radius: 5% 20% 30% 40%;
+}

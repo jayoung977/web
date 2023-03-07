@@ -1,0 +1,63 @@
+/* .parent {
+    width: 500px;
+    height: 200px;
+    background-color: red;
+}
+
+.parent .min {
+    min-width: 400px;
+    background-color: orange;
+    height: 100px;
+}
+
+.parent .max {
+    max-width: 400px;
+    background-color: aqua;
+    height: 100px;
+
+} */
+
+
+
+.box {
+    background-color: rgb(46, 75, 100);
+    border: 1px solid black;
+}
+
+.box-px {
+    width: 50px;
+    /* height: 50px; */
+    /* calc () 띄어쓰기 필수 */
+    height: calc(50vw - 10px);
+}
+/*  브라우저 크기의 50% */
+.box-view {
+    /* 가로 너비에서의 50% */
+    width: 10vw;
+    /* 세로 너비에서의 50% */
+    height: 10vh;
+
+}
+/* body가 기본적으로 margin을 가짐 그래서 %는 margin을 포함시켜서 가지고 옴, view는 이거에 상관 없이 브라우저에 영향 */
+body {
+    height: 1000px;
+}
+
+/* 부모가 body라서 기본 적으로 세로가 없음 */
+.box-per {
+    width: 10%;
+    height: 10%;
+
+}
+/* 반응형 페이지-  모바일, 컴퓨터로 들어 갔을 떄 페이지가 다름 이때 min,max많이 쓰임  */
+
+
+
+.rem {
+    font-size: 2rem;
+}
+
+/* 처음에는 body 16px의 2배를 받고 이후 em은 부모의 폰트를 받아 2배되어 64px, 이후 2배 128px로 점점 커짐 */
+.em {
+    font-size: 2em;
+}

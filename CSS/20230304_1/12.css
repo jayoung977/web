@@ -1,0 +1,32 @@
+.square {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    border: 1px solid gray;
+}
+
+.square img[alt="푸"] {
+    width: 200px;
+}
+
+
+.overflow-hidden {
+    overflow: hidden;
+    overflow-x: hidden;
+    
+}
+.overflow-auto {
+    overflow: auto;
+
+}
+.overflow-scroll {
+    overflow: scroll;
+
+}
+.overflow-visible {
+    overflow: visible;
+    /* x축 hidden y축 auto*/
+    overflow: hidden auto; 
+
+}

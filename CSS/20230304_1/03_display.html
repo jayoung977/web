@@ -1,0 +1,58 @@
+<!-- 
+    @ 디스플레이
+    디스플레이: 인라인 요소, 블록 요소
+        1.인라인 요소 : span이 대표적 - 수평으로 붙음 , 가로 세로 너비지정해도 적용이 되지 않음 , 콘텐츠의 크기만큼만 할당됨,
+        마진이랑 패딩은 여백에 관한 것들임 마진은 양옆으로 지정 가능,위아래는 적용 불가
+        스팬 안에 디브 들어갈 수 없음
+        2. 블록요소: 디브가 대표적, 자동으로 줄바꿈되서 위아래로 쌓임 부모요소의 크기만큼 자동으로 늘어남 , 너비 지정 가능
+        마진이랑 패딩도 적용 가능, 디브 안에 스팬, 디브 모두 넣을 수 있음
+        3.인라인-블록?
+
+    @ 마진과 패딩?
+    content와 border만 눈에 보임 
+        1.margin: 기본적으로 0으로 됨 , h태그는 기본 적으로 마진 값을 지님
+        auto , 음수 가능, 단축 속성??- top,left,right,bottom 
+            1개-하나만쓰면 모든 방향, 
+            2개 -위아래,양옆, 
+            3개- 위, 양옆, 아래 적용, 
+            4개-시계방향으로 위,오른쪽,아래,왼쪽
+            개별적으로도 가능 margin-top:
+        2.padding: 단축속성 가능 margin과 동일함
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css 기본 속성 배우기</title>
+    <link rel="stylesheet" href="./03_display.css">
+ </head>
+ <body>
+    <h2>display 속성</h2>
+    <!-- .d-block*4{block$} -->
+    <div class="d-block">block1</div>
+    <div class="d-block">block2</div>
+    <div class="d-block">block3</div>
+    <div class="d-block">block4</div>
+    <br/><br/>
+
+    <!-- span.d-inline*4{inline$} -->
+
+    <span class="d-inline">inline1</span>
+    <span class="d-inline">inline2</span>
+    <span class="d-inline">inline3</span>
+    <span class="d-inline">inline4</span>
+    <br/><br/>
+    <!-- span.d-inline-block*3{inline-block$} -->
+    span.d-inline-block*3{inline-block$}
+
+    <span class="d-inline-block">inline-block1</span>
+    <span class="d-inline-block">inline-block2</span>
+    <span class="d-inline-block">inline-block3</span>
+    
+
+
+ </body>
+ </html>

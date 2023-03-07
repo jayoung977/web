@@ -1,0 +1,40 @@
+<!-- 
+    visible
+    hidden
+    scroll:내용이 안넘쳐도 스크롤 바 
+    auto:넘칠 때만 스크롤바 생김
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="12.css">
+ </head>
+ <body>
+    <hr/>
+    <h2>overflow</h2>
+    <!-- .square*4>p+img -->
+    <!-- .square*4>p>lorem^img  // ^:parent tag-->
+    <div class="square overflow-hidden">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam maiores culpa ipsa optio provident blanditiis aut deleniti minus, natus, tenetur obcaecati. Nam odio perspiciatis praesentium nostrum eum quod accusantium commodi.</p>
+        <img src="./img/pooh.png" alt="푸">
+    </div>
+    <div class="square overflow-auto">
+        <p></p>
+        <img src="./img/pooh.png" alt="푸">
+    </div>
+    <div class="square overflow-scroll">
+        <p></p>
+        <img src="./img/pooh.png" alt="푸">
+    </div>
+    <div class="square overflow-visible">
+        <p></p>
+        <img src="./img/pooh.png" alt="푸">
+    </div>
+    
+ </body>
+ </html>

@@ -1,0 +1,45 @@
+.square {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
+
+/* 보더 크기도 전체 크기에 영향을 줌 */
+/* .border {
+    /* 위에거 잘 기억 */
+    /* border: 3px solid black; */
+    /* default: medium none black */
+    /* border-style: dashed; */
+    /* border-color: blue;
+    border-color: red orange yellow green;
+    border-left: 5px dotted slateblue;
+    border-top-style: dashed ; */
+    
+/* } */
+
+
+
+.border {
+    /* 위에거 잘 기억 */
+    border: 3px solid black;
+    /* border-top-width: 3px;
+    border-left-width: 4px;
+    border-right-width: 5px;
+    border-bottom-width: 6px; */
+
+    
+    border-width: 3px 4px 5px 6px;
+    border-style: dashed dotted  solid dotted;
+
+    border-color: red orange yellow green;
+    /* border-left: 5px dotted slateblue; */
+    
+    border-top-style: dashed ;
+    border-left-style: dotted ;
+    border-right-style: solid ;
+    border-bottom-style: dashed ;
+
+    /* 보더 크기도 전체 크기에 영향을 줌 */
+}
+

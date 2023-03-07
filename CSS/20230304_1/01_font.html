@@ -1,0 +1,46 @@
+<!-- css 속성에 대서 배워보자
+박스모델 - 레이아웃
+글꼴, 문자
+배배경- 백그라운드 속성
+배치- 중요함 요소를 어다에 위치시킬지
+플렉스(정렬)-도 중요 오늘은 안나감
+전환, 변환 - 요소의 움직임
+띄움- 따로 안배움 플랙스 로  대체
+애니메이션
+그리 다단- 플랙스 대체
+필터 - 도 안함 -->
+<!-- 먼저 font에 대해서 배워보자
+1. font-weight: 100단위로 , normal 400 bold 700
+2. font-size: 기본 16px, px,em,rem단위로 지정, %는 부모 요소의 크기 비율
+3. line-height: 줄(행) 사이의 간격,한줄일 때만 세로 정렬,px,em,rem,숫자일시 배수지정(크롬 1.2)
+4. font-family: 글꼴에 대한 속성 글꼴1,글꼴2는 사용자 지정,글꼴계열은 정해져 있음 및 필수 작성
+  -->
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>font</title>
+    <!-- 구글 폰트 link 방식 -->
+    <link rel="stylesheet" href="./01_font.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Song+Myung&display=swap" rel="stylesheet">
+    <!-- font-family: 'Song Myung', serif; -->
+</head>
+<body>
+    <h2>font관련 속성</h2>
+    <span class="noonnu_font">안녕하세요</span>
+    <span class="font-import">좋은 아침입니다.</span>
+    <span class="font-import">아침은 드시고 오셨나요?</span>
+
+    <p class="sentences">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+      Vitae sequi ut ipsum, culpa neque earum minima voluptatem amet voluptate fugiat 
+      eligendi cumque, provident laudantium, repellat optio libero nam odio. Quibusdam!
+    </p>
+    <a href="#">네이버로 이동</a>
+</body>
+</html>

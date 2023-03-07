@@ -1,0 +1,46 @@
+<!-- width,height
+max-w/h, min-w/h 최대 최소 지정
+단위: 
+ 1.px, 
+ 2. %:부모 크기 받아옴, 
+ 3. em: 요소의 글꼴 크기, %와 유사하게 부모와 연관 있음 
+ 4. rem : 루트 요소의 글꼴 크기 1rem - 16px 다른 픽셀로 지정 가능
+ 5. vw : 뷰포트 가로 너비릐 백분율
+ 6. vh : 뷰포트 세로 너비의 백분율
+뷰포트란? 브라우저 자체를 의미함, 우리가 보는 화면 
+픽셀이랑 다른 단위와 계산 할 때 Calc()로 계산해서 사용-->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./05_css.css">
+</head>
+<body>
+    <!-- <hr/>
+    <h2>max-width, min-width</h2>
+    <div class="parent">
+        <div class="min">min-width</div>
+        <div class="max">max-width</div>
+    </div> -->
+
+    <h2>단위</h2>
+    <!-- class 2개 -->
+    <div class="box box-px"></div>
+    <div class="box box-view"></div>
+    <div class="box box-per"></div>
+    <div class="rem">rem
+        <div class="rem">rem
+            <div class="rem">rem</div>
+        </div>
+    </div>
+
+    <div class="em">em
+        <div class="em">em
+            <div class="em">em</div>
+        </div>
+    </div>
+</body>
+</html>

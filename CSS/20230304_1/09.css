@@ -1,0 +1,23 @@
+.square {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    border: 1px solid gray;
+}
+
+.box-sizing {
+    padding: 20px;
+    border: 15px solid red;
+    background-color: orange;
+}
+
+.content-box {
+    /* 안쓰나 쓰나 동일 */
+    box-sizing: content-box;
+}
+
+/* border박스가 더 편리함 */
+.border-box {
+    box-sizing: border-box;
+}

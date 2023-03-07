@@ -1,0 +1,79 @@
+.container {
+    /* width: 1000px; */
+    width: 300px;
+    height: 400px;
+    background-color: #333;
+    /* 가로기준 중앙정렬 위아래, 양옆 단축속성 */
+    margin: 0 auto;
+    /* flex 기본 용어
+    - main axis: 주축(기본방향: 좌> 우)
+    - across axis: 교차축 
+    */
+    /* 주축 방향으로 수평 정렬됨 */
+    display: flex;
+    /* flex-direction: row; */
+    /* flex-direction: row-reverse; */
+    /* flex-direction: column; */
+    /* flex-direction: column-reverse; */
+
+    /* flex-wrap: 가로세로 유지 하면서 줄바꿈 */
+    /* flex-wrap: wrap; */
+    /* flex-wrap: nowrap; */
+
+    /* justify-content: 기본 정렬방법 ,왼쪽 정렬,중앙정렬, 오른쪽, 간격 있게(space-between,around,evenly)_ */
+    /* justify-content: flex-start; */
+    /* justify-content: flex-end; */  /*row-reverse와 달리 item 순서 안바뀜*/
+    /* justify-content: center; */
+    /* justify-content: space-between; */
+    /* justify-content: space-around; */
+    /* justify-content: space-evenly; */
+
+
+    /* align-items: 교차축으로 정렬 , 자기 줄에 대해서만 이동<-> justify-content 주축에 대한 정렬
+    stech: 높이가 전체를 차지 */
+    /* align-items: stretch; */  /* 높이 없을 때 길게 배치됨 */
+    /* align-items: flex-start; */
+    /* align-items: flex-end; */
+    /* align-items: center; */ /* 자기줄에 대해 정렬 */
+
+    /* align-content: 교차축, 전체에 대해 붙여다님 , *flex-wrap* 동반 */
+    /* align-content: stretch; */
+    /* align-content: flex-start; */
+    /* align-content: flex-end; */
+    /* align-content: center; */
+    /* align-content: space-between; */
+    /* align-content: space-around; */
+    /* align-content: space-evenly; */
+
+
+
+}
+.items {
+    width: 100px;
+    /* height: 100px; */
+    font-size: 1.5rem;
+    /* 정렬 */
+    text-align: center;
+    line-height: 100px;
+}
+
+.item1{
+    background-color: red;
+
+}
+.item2{
+    background-color: orange;
+
+}
+.item3{
+    background-color: yellow;
+
+}
+.item4{
+    background-color: green;
+
+}
+.item5{
+    background-color: blue;
+
+}

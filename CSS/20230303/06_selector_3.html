@@ -1,0 +1,70 @@
+<!-- 사용자 행동에 때라 변화하는 가상 클래스 선택자
+1) 사용자 행동에 따라 변화- 선택자 이름:hover {} : 마우스를 올렸을 때 변화되는 부분
+2) 클릭하는 동안 변화- 선택자:active {}
+3) 포커스 되면 선탣 됨 - 선택자: focus {}-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자3</title>
+    <style>
+        .div1 {
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+            /*가운데 정렬 */
+            text-align: center;
+            /*가운데 정렬 */
+            line-height: 100px; 
+        }
+        .div1:hover {
+            background-color: hotpink;
+            height: 150px;
+            /* 화살표->손가락 */
+            cursor: pointer;
+        }
+        /* 길게 누르면 누르는 동안 변화됨 */
+        .div1:active {
+            background-color: brown;
+            width: 150px;
+        }
+        /* 커서가 깜빡일 동안, 포커스 없으면 원래 흰색 */
+        input:focus {
+            background-color: blueviolet;
+            color: white;
+            outline-color: aqua;
+        }
+        .links > a {
+            font-size: 20px;
+            font-weight: bold;
+            color: green;
+        }
+
+
+        .links > a:hover {
+            background-color: coral;
+        }
+        /* 잘 안쓰임 */
+        .links > a:visited {
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">
+        <span>
+           div1 
+        </span>
+    </div>
+    <input type="text">
+    <div class="links">
+        <a href="http://www.naver.com">네이버</a>
+        <a href="">구글</a>
+    </div>
+</body>
+</html>

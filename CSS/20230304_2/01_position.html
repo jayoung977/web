@@ -1,0 +1,35 @@
+<!-- position 요소의 위치를 잡아줌
+1) relative:요소 자신을 기준으로 배치,
+    position: relative;
+    top: -px
+    bottom:
+    right:
+    left:
+2) absolute: 부모 요소를 기준으로 배치, 자기 자리가 없어지고 붕떠서 이동 
+    만약 '부모의 position 값이 static'이면 없다고 가정하고(디폴트 값이므로 값이 지정되지 않았다고 봄) 
+    -> '부모의 부모'를 기준으로 함
+    만약 둘다 static이라면 view port(브라우저)를 기준으로 함
+3) fixed: 자리를 없애서 이동 ,둥뜸 기준은 항상 뷰포트(브라우저)를 기준으로 이동  
+
+static-기본요소 
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position</title>
+    <link rel="stylesheet" href="./01.css">
+</head>
+<body>
+    <h2>position</h2>
+    <div class="position-static">static</div>
+    <div class="position-relative">relative
+        <div class="position-absolute">absolute</div>
+    </div>
+    
+    <div class="position-fixed">fixed</div>
+    <div class="position-relative">relative</div>
+</body>
+</html>

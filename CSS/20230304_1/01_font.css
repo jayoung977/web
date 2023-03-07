@@ -1,0 +1,52 @@
+/* 구글 폰트 import 방식*/
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap');
+/* <!-- font-family: 'Nanum Brush Script', cursive;--> */
+
+/* 눈누 폰트는 font gamily가 내장되어 있음 */
+@font-face {
+    font-family: 'KimjungchulMyungjo-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulMyungjo-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* 전체 글꼴 설정 */
+body {
+    font-family: 'KimjungchulMyungjo-Bold';
+}
+
+.sentences {
+    font-weight: 700;
+    /* text-align: center;
+    text-align: left;
+    text-align: right; */
+    /* 취소선 */
+    text-decoration: line-through;
+    text-decoration: underline;
+
+    /* 16픽셀의 2배인 32픽셀에 대해 정렬 */
+    line-height: 2;
+    font-family: 'Song Myung', serif;
+
+
+
+
+
+}
+
+
+/* a태그 밑줄없애기 */
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.font-import {
+    /* 폰트 여러개 연달아 쓸 수 있음 있는 거부터 사용 */
+    font-family: 'Nanum Brush Script', cursive;
+}
+
+.noonnu_font{
+    font-family: 'KimjungchulMyungjo-Bold'
+
+}

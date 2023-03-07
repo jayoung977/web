@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+
+
+        img{
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            right: 0px;
+            left: 0px;
+            margin: auto;
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+            transform: skew(0deg,30deg );
+            box-sizing: border-box;
+
+
+        }
+
+        .beach1 { 
+            top: 15px;
+            right: 20px;
+            z-index: 1;
+        }
+        .beach1:hover { 
+            transition-duration: 1s;
+            transform: translateX(50px) scaleX(2);
+            z-index: 4;
+
+
+        }
+        .beach2 {
+            top: 15px;
+            right: 80px;
+            z-index: 2;
+            
+        }
+        .beach2:hover {
+            transition-duration: 1s;
+            transform: translateX(50px) scaleX(2);
+            z-index: 5;
+            
+        }
+        .beach3 {
+            top: 15px;
+            right: 140px;
+            z-index: 3;            
+            
+        } 
+        .beach3:hover {
+            transition-duration: 1s;
+            transform: translateX(50px) scaleX(2);
+            z-index: 5;        
+
+            
+        } 
+
+    </style>
+
+</head>
+<body>
+    <div>
+        <img class="beach beach1" src="./img/beach1.jpg" alt="beach1">
+
+        <img class="beach beach2" src="./img/beach2.jpg" alt="beach2">
+    
+        <img class="beach beach3" src="./img/beach3.jpg" alt="beach3">
+        
+    </div>
+</body>
+</html>

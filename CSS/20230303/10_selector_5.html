@@ -1,0 +1,47 @@
+<!-- 가상요소 선택자
+선탣된 요소 앞,뒤에 별도의 content를 삽입
+1)box::before{ content:"내용"}:
+2)box::after{ content:"내용"}
+직접 태그를 사용해서 안써도 되서 자주 사용됨 -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가상요소 선택자 + 속성 선택자</title>
+    <style>
+        .div {
+            background-color: pink;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        /* .div::after {
+      
+            content: "after";
+            color: white;
+        } */
+
+        .div:hover::after {
+            content: "얍";
+            color: white;
+        }
+        .div::before {
+            content: "";
+            background-color: red;
+            display: inline-block;
+            width: 2px;
+            height: 20px;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <!-- div.div or .div-->
+    <div class="div">가상요소 선택자</div>
+    <!-- #id -->
+</body>
+</html>

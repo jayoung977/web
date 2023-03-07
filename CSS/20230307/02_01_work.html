@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+
+    .ball {
+        position: fixed;
+        width: 100px;
+        height: 100px;
+        background-color: aqua;
+        border-radius: 50%;
+        animation-duration: 5s;
+        animation-name: around-corner;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+
+    @keyframes around-corner {
+        0%{
+            right: 0vw;
+            bottom: 0px;
+        }
+        25%{
+
+            /* right: 500px; */
+            right: calc(100vw - 100px);
+            bottom: 0vh ;
+        }
+        50%{
+            /* right: 500px; */
+            right: calc(100vw - 100px);
+            bottom: calc(100vh - 100px);
+        }
+        75%{
+            right: 0vw;
+            bottom: calc(100vh - 100px);
+           
+        }
+        100%{
+            right: 0vw;
+            bottom: 0vh ;
+            
+        }
+    }
+
+</style>
+<body>
+    <div class="ball"></div>
+</body>
+</html>
