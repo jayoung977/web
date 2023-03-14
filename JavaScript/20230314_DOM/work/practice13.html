@@ -34,11 +34,29 @@
       function cal() {
         let value1 = Number(document.querySelector("#value1").value);
         let value2 = Number(document.querySelector("#value2").value);
-        let operator = document.querySelector("#operator").value;
+        let opt = document.querySelector("#operator").value;
+        console.log(opt);
 
-        document.querySelector("#result").value =
-          // value1 + operator.replace("'", "") + value2;
-          eval(value1 + operator + value2);
+        const opt_obj = {
+          "+": (value1, value2) => {
+            return value1 + value2; //리턴값 안써줬었음
+          },
+          "-": (value1, value2) => {
+            return value1 - value2;
+          },
+          "*": (value1, value2) => {
+            return value1 * value2;
+          },
+          "/": (value1, value2) => {
+            return value1 / value2;
+          },
+        };
+        console.log(opt_obj[opt](value1, value2));
+
+        document.querySelector("#result").value = opt_obj[opt](value1, value2);
+
+        // value1 + operator.replace("'", "") + value2;
+        // eval(value1 + operator + value2);
 
         //return eval(a + op + b);
       }
