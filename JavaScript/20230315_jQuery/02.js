@@ -90,7 +90,7 @@ function beforeJquery() {
   $(".green").before("<li>before() 형제요소로 추가된 jquery</li>");
 }
 
-//removeJ
+//remove()
 function removeJS() {
   let li = document.querySelector("#li2");
   li.remove();

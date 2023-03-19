@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <style>
+      .swiper {
+        width: 100%;
+        background-color: burlywood;
+        height: 200px;
+      }
+      .swiper-wrapper {
+        height: 100%;
+      }
+
+      .swiper-slide {
+        width: 200px;
+        height: 100%;
+        border: 1px solid slateblue;
+        text-align: center;
+      }
+      .swiper-button-prev {
+        color: black;
+      }
+      .swiper-button-next {
+        color: black;
+      }
+
+      .swiper-pagination-bullet {
+        width: 10px;
+        height: 10px;
+        background-color: cyan;
+        border: 1px solid black;
+        opacity: 1;
+      }
+      .swiper-pagination-bullet-active {
+        width: 40px;
+        transition: width 0.5s;
+        border-radius: 5px;
+        background-color: pink;
+        border: 1px solid transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- swiper class 여야함 -->
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <!-- .swiper-slide{slid $}*9 -->
+        <div class="swiper-slide">slid 1</div>
+        <div class="swiper-slide">slid 2</div>
+        <div class="swiper-slide">slid 3</div>
+        <div class="swiper-slide">slid 4</div>
+        <div class="swiper-slide">slid 5</div>
+        <div class="swiper-slide">slid 6</div>
+        <div class="swiper-slide">slid 7</div>
+        <div class="swiper-slide">slid 8</div>
+        <div class="swiper-slide">slid 9</div>
+      </div>
+      <!-- swiper-pagination -->
+      <div class="swiper-pagination"></div>
+      <!-- 화살표 -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+      <!-- 스크롤바 -->
+      <div class="swiper-scrollbar"></div>
+    </div>
+    <script>
+      const swiper = new Swiper(".swiper", {
+        loop: true,
+        slidesPerView: 3,
+        autolay: true, //자동재생
+        mousewheel: true,
+        speed: 1000, //1000 1s, 넘어가는 시간
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        scrollbar: {
+          el: ".swiper-scrollbar",
+        },
+      });
+    </script>
+  </body>
+</html>
