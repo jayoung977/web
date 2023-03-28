@@ -82,7 +82,7 @@ function pickDrink() {
 }
 function pay() {
   // resolve() === pay()
-  console.log(`상품명: ${product}, 가격:${price}`);
+  console.log(`상품명: ${product}, 가격: ${price}`);
 }
 
 async function exec() {
