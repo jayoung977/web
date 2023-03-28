@@ -1,5 +1,5 @@
-// serTimeout()
-// serTimeout(code, delay);
+// setTimeout()
+// setTimeout(code, delay);
 // delay 동안 기다리다가 code 함수 실행
 // 2초 : 2000 , ms 단위
 
