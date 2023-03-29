@@ -23,12 +23,22 @@ app.get("/", function (req, res) {
 app.get("/getForm", (req, res) => {
   //   console.log(req);
   console.log(req.query); //터미널에서 출력 //{ id: '', pw: '1111' }
-  res.send("get 요청 성공!!");
+  // res.send("get 요청 성공!!");
+  res.render("result", {
+    title: "GET 요청 폼 결과 확인하기",
+    id: req.query.id,
+    password: req.query.pw,
+  }); //result.ejs 가능
 });
 // post - http://localhost:8000/postForm
 app.post("/postForm", (req, res) => {
   console.log(req.body);
-  res.send("post 요청 성공!!");
+  // res.send("post 요청 성공!!");
+  res.render("result", {
+    title: "POST 요청 폼 결과 확인하기",
+    id: req.body.id,
+    password: req.body.pw,
+  }); //result.ejs 가능
 });
 
 //호출
