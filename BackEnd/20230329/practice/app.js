@@ -9,50 +9,50 @@ app.use("/views", express.static(__dirname + "/views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+//Routing(경로 설정)
 app.get("/", function (req, res) {
   const myTitle = "실습 풀이";
-  res.render("index", { title: myTitle }); // 서버에서 값 반환
+  res.render("index", { title: myTitle });
 });
 
 app.get("/practice1", function (req, res) {
-  res.render("practice1"); // 서버에서 값 반환
+  res.render("practice1");
 });
 
 app.get("/practice2", function (req, res) {
-  res.render("practice2"); // 서버에서 값 반환
+  res.render("practice2");
 });
 
-app.get("/getForm", (req, res) => {
+app.get("/result1", (req, res) => {
   console.log(req.query);
   res.render("result", {
     title: "실습1 폼 전송 완료!",
-    name: req.query.name,
-    female: req.query.female,
-    male: req.query.male,
-    year: req.query.year,
-    month: req.query.month,
-    day: req.query.day,
-    travel: req.query.travel,
-    fashion: req.query.fashion,
-    food: req.query.food,
+    // 정답 코드: 쿼리를 한번에 받기
+    userInfo: req.query,
+    // 이전 코드:
+    // name: req.query.name,
+    // gender: req.query.gender,
+    // year: req.query.year,
+    // month: req.query.month,
+    // day: req.query.day,
+    // hobby: req.query.hobby,
   });
 });
 
-app.post("/postForm", (req, res) => {
+app.post("/result2", (req, res) => {
   console.log(req.body);
   res.render("result", {
     title: "실습2 폼 전송 완료!",
-    name: req.body.name,
-    female: req.body.female,
-    male: req.body.male,
-    year: req.body.year,
-    month: req.body.month,
-    day: req.body.day,
-    travel: req.body.travel,
-    fashion: req.body.fashion,
-    food: req.body.food,
-    color: req.body.color,
-    number: req.body.number,
+    userInfo: req.body,
+    // 이전 코드:
+    // name: req.body.name,
+    // gender: req.body.gender,
+    // year: req.body.year,
+    // month: req.body.month,
+    // day: req.body.day,
+    // hobby: req.body.hobby,
+    // color: req.body.color,
+    // number: req.body.number,
   });
 });
 

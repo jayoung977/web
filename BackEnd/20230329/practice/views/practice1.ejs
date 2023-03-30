@@ -4,24 +4,28 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>자영 실습</title>
+    <title>get 방식 form</title>
   </head>
   <body>
     <h1>실습1. get으로 정보받기</h1>
-    <form action="/getForm" name="login1" method="get" class="get-form">
+    <form action="/result1" name="login1" method="get" class="get-form">
+      <!-- label for === input id -->
       <label for="name">이름</label>
+      <!-- name: 은 서버가 확인하는 키값 -->
       <input type="text" id="name" name="name" />
       <br />
       <fieldset>
         <legend>성별</legend>
-        <input type="radio" name="female" id="female" value="female" />
-        <label for="female">여성</label>
-        <input type="radio" name="male" id="male" value="male" />
+        <!-- radio버튼 하나만 선택하기 위해서는 name을 동일하게 해야함 name은 키값 value는 값-->
+        <input type="radio" name="gender" id="female" value="female" />
         <label for="male">남성</label>
+        <input type="radio" name="gender" id="male" value="male" />
+        <label for="female">여성</label>
       </fieldset>
       <br />
       <fieldset>
         <legend>생년 월일</legend>
+        <!-- input type date도 됨 -->
         <select id="year" name="year">
           <%for (let i =0; i < 50; i++){%>
           <option value="<%= 2010-i%>"><%= 2010-i%></option>
@@ -29,14 +33,14 @@
         </select>
         <label for="year">년</label>
         <select id="month" name="month">
-          <%for (let i =0; i < 12; i++){%>
-          <option value="<%= i+1%>"><%= i+1%></option>
+          <%for (let i =1; i < 13; i++){%>
+          <option value="<%= i%>"><%= i%></option>
           <%}%>
         </select>
         <label for="month">월</label>
         <select id="day" name="day">
-          <%for (let i =0; i < 30; i++){%>
-          <option value="<%= i+1%>"><%= i+1%></option>
+          <%for (let i =1; i < 31; i++){%>
+          <option value="<%= i%>"><%= i%></option>
           <%}%>
         </select>
         <label for="day">일</label>
@@ -44,11 +48,11 @@
       <br />
       <fieldset>
         <legend>관심사</legend>
-        <input type="checkbox" name="travel" id="travel" value="travel" />
+        <input type="checkbox" name="hobby" id="travel" value="travel" />
         <label for="travel">여행</label>
-        <input type="checkbox" name="fashion" id="fashion" value="fashion" />
+        <input type="checkbox" name="hobby" id="fashion" value="fashion" />
         <label for="fashion">패션</label>
-        <input type="checkbox" name="food" id="food" value="food" />
+        <input type="checkbox" name="hobby" id="food" value="food" />
         <label for="food">음식</label>
       </fieldset>
       <br />

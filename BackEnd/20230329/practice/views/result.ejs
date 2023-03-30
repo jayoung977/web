@@ -9,21 +9,18 @@
   <body>
     <h1><%= title%></h1>
     <ul>
-      <li>이름:<span><%= name%></span></li>
-      <%if (female) {%>
-      <li>성별:<span><%= female%></span></li>
-      <%} else if (male) {%>
-      <li>성별:<span><%= male%></span></li>
-      <%}%>
+      <li>이름:<%= userInfo.name%></li>
 
-      <li>생일:<span><%= year%>-<%= month%>-<%= day%></span></li>
+      <li>성별:<%= userInfo.gender%></li>
 
-      <li>관심사:<span><%= travel%>, <%= fashion%>, <%= food%></span></li>
+      <li>생일:<%= userInfo.year%>-<%= userInfo.month%>-<%= userInfo.day%></li>
 
-      <%if (typeof color !== 'undefined') {%>
-      <li>좋아하는 색상:<span><%= color%></span></li>
+      <li>관심사:<%= userInfo.hobby%></li>
+      <!-- <%#if (userInfo.color) {%>도 가능 -->
+      <%if (typeof userInfo.color !== 'undefined') {%>
+      <li>좋아하는 색상:<%= userInfo.color%></li>
       <%}%> <%if (typeof number!== 'undefined') {%>
-      <li>좋아하는 숫자:<span><%= number%></span></li>
+      <li>좋아하는 숫자:<%= userInfo.number%></li>
       <%}%>
     </ul>
     <br />
