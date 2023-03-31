@@ -26,7 +26,7 @@ app.post("/axios", (req, res) => {
   const serverPw = "4321"; //정답 패스워드
 
   console.log(req.body); //터미널 출력, 형식 { id: 'xxxx', pw: 'xxxx' }
-
+  // 서버단에서 컬러나 메세지 출력하기보다는 ejs에서 출력을 권장함
   if (req.body.id === serverId && req.body.pw === serverPw) {
     const mymsg = `${req.body.id}님! 로그인 성공😁`;
     const mycolor = "blue";
