@@ -51,13 +51,15 @@ app.use("/uploads", express.static(__dirname + "/uploads")); //경로 의미 앞
 app.get("/", (req, res) => {
   res.render("index");
 });
+
+//2-1. single() 업로드
 //.single(): 하나의 파일 업로드 할 때 사용
 //.single()의 매개변수는 input의 name과 일치시킴
 //<input type="file" name="userfile" />
 app.post("/upload", uploadDetail.single("userfile"), (req, res) => {
   //업로드한 파일 정보는 req.file에 존재 (req.body에 없고)
   console.log(req.file);
-  // -- 출력 결과 --
+  // -- 1-1 출력 결과 --
   //   {
   //     fieldname: 'userfile', // 폼에 정희한 name
   //     originalname: 'hamster1.jpeg', // 사용자가 업로드한 파일명
@@ -70,10 +72,31 @@ app.post("/upload", uploadDetail.single("userfile"), (req, res) => {
   //   }
   //폼 정보 req.body에 존재
   console.log(req.body);
-  // -- 출력 결과 --
+  // -- 1-1 출력 결과 --
   //   [Object: null prototype] { title: '첫번째 햄스터' } //input title에 입력한 값
   res.send("upload 완료~!!");
 });
+
+//2-2. array() 한번에 여러개 업로드
+app.post("/upload/array", uploadDetail.array("userfile"), (req, res) => {
+  //array 일 때 req.file's' 로 file 받음
+  console.log(req.files); //[{}, {}, {}] 3개 올렸을 때
+  console.log(req.body); // {title: 'xxx'}
+  res.send("한번에 여러개 파일 업로드 완료!");
+});
+
+//2-3. fields() 여러 input에 각각 파일 업로드
+app.post(
+  "/upload/fields",
+  // [{ name: "userfile1" }, { name: "userfile2" }]: input 개수 만큼 어레이 넣어야함
+  uploadDetail.fields([{ name: "userfile1" }, { name: "userfile2" }]),
+  (req, res) => {
+    //fields 일 때 파일 여러개니까 req.file's' 로 file 받음
+    console.log(req.files); //{userfile1: [{}], userfile2: [{}]} 형태로 파일 정보 출력
+    console.log(req.body); //{title1: '...', title2: '...'}
+    res.send("각각 여러개 파일 업로드 완료!");
+  }
+);
 
 app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);
