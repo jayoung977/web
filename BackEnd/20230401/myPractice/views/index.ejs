@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>파일 업로드</title>
+    <style>
+      body {
+        background-color: aliceblue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>파일 업로드 실습!!</h1>
+    <h2>한개만 업로드</h2>
+    <br />
+    <form action="/register" method="POST" enctype="multipart/form-data">
+      <input type="text" name="id" placeholder="아이디" /><br />
+      <input type="password" name="pw" placeholder="비밀번호" /><br />
+      <input type="text" name="name" placeholder="이름" /><br />
+      <input type="number" name="age" placeholder="나이" /><br />
+      <input type="file" name="userfile" /><br />
+      <br />
+      <button type="submit">회원가입</button>
+    </form>
+    <h2>한번에 여러개 업로드</h2>
+    <form action="/register/array" method="POST" enctype="multipart/form-data">
+      <input type="text" name="id" placeholder="아이디" /><br />
+      <input type="password" name="pw" placeholder="비밀번호" /><br />
+      <input type="text" name="name" placeholder="이름" /><br />
+      <input type="number" name="age" placeholder="나이" /><br />
+      <input type="file" name="userfile" multiple /><br />
+      <br />
+      <button type="submit">회원가입</button>
+    </form>
+
+    <h2>여러번 업로드</h2>
+    <form action="/register/feilds" method="POST" enctype="multipart/form-data">
+      <input type="text" name="id" placeholder="아이디" /><br />
+      <input type="password" name="pw" placeholder="비밀번호" /><br />
+      <input type="text" name="name" placeholder="이름" /><br />
+      <input type="number" name="age" placeholder="나이" /><br />
+      <input type="file" name="userfile1" /><br />
+      <input type="file" name="userfile2" /><br />
+      <input type="file" name="userfile3" /><br />
+      <br />
+      <button type="submit">회원가입</button>
+    </form>
+  </body>
+</html>

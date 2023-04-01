@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>결과</title>
+    <style>
+      body {
+        background-color: rgb(29, 29, 29);
+      }
+      img {
+        margin-top: 30px;
+        width: 200px;
+        height: 200px;
+      }
+      .card {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        border-radius: 10px;
+        background-color: white;
+        align-items: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin-bottom: 30px;
+      }
+      .card p {
+        margin-top: -10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <%for (let i =0; i < userFile.length; i++){%>
+      <img src="/<%=userFile[0].path%>" alt="image" />
+      <%}%>
+      <h2><%=userInfo.id%>님 환영합니다</h2>
+      <p>
+        비밀번호: <%=userInfo.pw%><br />
+        이름: <%=userInfo.name%><br />
+        나이: <%=userInfo.age%>
+      </p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>폼 전송 결과 페이지</title>
+    <style>
+      body {
+        background-color: rgb(29, 29, 29);
+        height: 100vh;
+        display: flex;
+        /* 주축 가로 정렬 */
+        justify-content: center;
+        /* 교차축 세로 정렬 */
+        align-items: center;
+      }
+      ul {
+        list-style: none;
+        /* 왼쪽 여백 제거 */
+        padding-left: 0;
+      }
+
+      .card {
+        text-align: center;
+        background-color: #fffff8;
+        border-radius: 20px;
+        /* 상하 30px 좌우 10px  */
+        padding: 30px 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <!-- /로 시작해야함 -->
+      <img src="/<%=src%>" alt="이미지" />
+      <h2><%=userInfo.id%>님 환영합니다</h2>
+      <ul>
+        <li>비밀번호: <%=userInfo.pw%></li>
+        <li>이름: <%=userInfo.name%></li>
+        <li>나이: <%=userInfo.age%></li>
+      </ul>
+    </div>
+  </body>
+</html>
