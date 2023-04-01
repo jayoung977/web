@@ -10,8 +10,36 @@ const multer = require("multer");
 const path = require("path");
 //파일 업로드 경로 설정 = 서버 저장 경로 설정
 //dest 키: 파일이 저장될 경로를 지정
-const upload = multer({
-  dest: "uploads/", //폴더 의미 뒤에 'uploads/'슬래시
+
+//1-1. 파일 이름 변경 안할 때
+
+// const upload = multer({
+//   dest: "uploads/", //폴더 의미 뒤에 'uploads/'슬래시
+// });
+
+//1-2. multer 세부설정(파일 이름 변경)
+const uploadDetail = multer({
+  storage: multer.diskStorage({
+    //destination: 경로 설정
+    destination(req, file, done) {
+      //done(error 처리, destination 경로 지정)
+      done(null, "uploads/");
+    },
+    filename(req, file, done) {
+      //file.originalname에서 '확장자' 추출
+      // 가정) apple.png 파일 업로드 => 'png' 추출
+      const ext = path.extname(file.originalname);
+      //[파일먕 + 현재시간.확장자] 형식으로 파일 업로드
+      //path.basename(file.originalname,ext): 파일이름에서 확장자 제거 => 'apple'추출
+      //Date.now() => 현재시간(1680309598964)
+      //1970년 1월 1일 0시 0분 0초를 기준으로 현재까지 경과된 밀리초
+      done(null, path.basename(file.originalname, ext) + Date.now() + ext);
+    },
+  }),
+  //5MB로 제한
+  //5 * 2^10 = 5KB
+  //5 * 2*10 * 2^10 = 5MB
+  limits: { fileSize: 5 * 1024 * 1024 },
 });
 
 app.set("view engine", "ejs");
@@ -26,7 +54,7 @@ app.get("/", (req, res) => {
 //.single(): 하나의 파일 업로드 할 때 사용
 //.single()의 매개변수는 input의 name과 일치시킴
 //<input type="file" name="userfile" />
-app.post("/upload", upload.single("userfile"), (req, res) => {
+app.post("/upload", uploadDetail.single("userfile"), (req, res) => {
   //업로드한 파일 정보는 req.file에 존재 (req.body에 없고)
   console.log(req.file);
   // -- 출력 결과 --
