@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>동적 폼 실습</title>
+    <!-- axios 실습 위한 axios CDN -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+      .success {
+        color: blue;
+        font-weight: 700;
+      }
+      .fail {
+        color: red;
+        font-weight: 700;
+      }
+      .error {
+        color: gray;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>로그인</h2>
+    <p class="explain">
+      (참고) app.js에 저장한 아이디는 banana이고, 비밀번호는 4321입니다.
+      아이디와 비밀번호가 일치할 때와 불일치할 때 어떻게 다른지 확인해보세요!!
+    </p>
+    <form name="login2">
+      <label for="id">아이디</label>
+      <input type="text" id="id" name="id" />
+      <label for="pw">비밀번호</label>
+      <input type="password" id="pw" name="pw" />
+      <button type="button" onclick="axiosPost();">로그인</button>
+      <br />
+      <br />
+      <div class="result2"></div>
+    </form>
+
+    <script>
+      document.querySelector(".explain").style.color = "gray";
+      document.querySelector(".explain").style.fontSize = "12px";
+
+      //실습2. axios post 로그인
+      const resultBox2 = document.querySelector(".result2");
+
+      async function axiosPost() {
+        const form = document.forms["login2"];
+        const formInfo = { id: form.id.value, pw: form.pw.value };
+
+        //2-1.promise
+        axios({
+          url: "/axios2",
+          method: "POST",
+          data: formInfo,
+        }).then((response) => {
+          console.log(response);
+          if (response.data.isLogin) {
+            resultBox2.textContent = `${response.data.userInfo.name}님! 로그인 성공😁`;
+            resultBox2.classList.remove("fail");
+            resultBox2.classList.add("success");
+          } else {
+            resultBox2.textContent = `아이디 또는 패스워드 오류😥`;
+            resultBox2.classList.remove("success");
+            resultBox2.classList.add("fail");
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
