@@ -8,9 +8,8 @@ app.use("/static", express.static(__dirname + "/static"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// (임시) DB로부터 받아온 댓글 목록
+// (임시 데이터) DB로부터 받아온 댓글 목록 가정
 // mySQL에서 불러올때 이런 형식으로 불러와짐
-// 임시 데이터
 const comments = [
   {
     id: 1,
@@ -52,7 +51,14 @@ app.get("/comments", (req, res) => {
   res.render("comments", { commentInfos: comments });
 });
 
-// GET /comment/:id
+// 1. GET query 보내기:
+// GET /comment -> GET /comment/?id=6&name=홍길동
+// req.query 출력 -> 출력{id:6, name:"홍길동"}
+// req.query.id 출력-> 6
+// 2. GET parameter 보내기 (콜론(:) 적고 변수 이름을 적는 형태):
+// GET /comment/:id/:name ->  /comment/6/홍길동
+// req.params 출력 ->  {id:6, name:"홍길동"}
+// req.params.id 출력 -> 6
 app.get("/comment/:id", (req, res) => {
   console.log(req.params); // 라우트 매개변수에 대한 정보 담겨 있음
   console.log(req.params.id); // id 고유 값
@@ -60,19 +66,20 @@ app.get("/comment/:id", (req, res) => {
   const commentId = req.params.id; // 댓글 id: url로 들어온 매개변수
   console.log(comments[commentId - 1]);
 
-  // 존재하지 않는 댓글 id 접근시 404 페이지
-  if (commentId < 1 || commentId > comments.length) {
+  // :id 변수에 숫자가 아닌 값이 온다면 404 페이지
+  if (isNaN(commentId)) {
     return res.render("404");
   }
 
-  // :id 변수에 숫자가 아닌 값이 온다면 404 페이지
-  if (isNaN(commentId)) {
+  // 존재하지 않는 댓글 id 접근시 404 페이지
+  if (commentId < 1 || commentId > comments.length) {
     return res.render("404");
   }
 
   res.render("comment", { commentInfo: comments[commentId - 1] });
 });
 
+// 없는 페이지에 접근하려고 할 때 렌더될 이미지
 // [404 error]
 // 맨 마지막 라우트로 선언: nor 나머지 코드 무시되기 때문!!
 app.get("*", (req, res) => {
