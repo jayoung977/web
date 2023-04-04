@@ -11,11 +11,10 @@ const path = require("path");
 //파일 업로드 경로 설정 = 서버 저장 경로 설정
 //dest 키: 파일이 저장될 경로를 지정
 
-//1-1. 파일 이름 변경 안할 때
-
-// const upload = multer({
-//   dest: "uploads/", //폴더 의미 뒤에 'uploads/'슬래시
-// });
+// 1-1. 세부설정 없이 multer 사용할 때(파일 이름 변경 안할 때)
+const upload = multer({
+  dest: "uploads/", //뒤에 'uploads/'슬래시: 폴더를 의미함
+});
 
 //1-2. multer 세부설정(파일 이름 변경)
 const uploadDetail = multer({
@@ -29,7 +28,7 @@ const uploadDetail = multer({
       //file.originalname에서 '확장자' 추출
       // 가정) apple.png 파일 업로드 => 'png' 추출
       const ext = path.extname(file.originalname);
-      //[파일먕 + 현재시간.확장자] 형식으로 파일 업로드
+      //[파일명 + 현재시간.확장자] 형식으로 파일 업로드
       //path.basename(file.originalname,ext): 파일이름에서 확장자 제거 => 'apple'추출
       //Date.now() => 현재시간(1680309598964)
       //1970년 1월 1일 0시 0분 0초를 기준으로 현재까지 경과된 밀리초
