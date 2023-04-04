@@ -43,14 +43,12 @@
       document.querySelector(".explain").style.color = "gray";
       document.querySelector(".explain").style.fontSize = "12px";
 
-      //실습2. axios post 로그인
       const resultBox2 = document.querySelector(".result2");
 
       async function axiosPost() {
         const form = document.forms["login2"];
         const formInfo = { id: form.id.value, pw: form.pw.value };
 
-        //2-1.promise
         axios({
           url: "/axios2",
           method: "POST",

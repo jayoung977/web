@@ -6,6 +6,7 @@ exports.main = (req, res) => {
   res.render("practice1");
 };
 
+//실습 1
 // exports.login = (req, res) => {
 //   const correctuser = Comment.getComments()[0];
 //   console.log(Comment.getComments()[0]);
@@ -22,6 +23,7 @@ exports.main = (req, res) => {
 //   }
 // };
 
+//실습 2
 exports.login = (req, res) => {
   const correctuser = Comment.users;
   console.log(correctuser);
