@@ -43,6 +43,12 @@ exports.login = (req, res) => {
         const name = exist_user_arr[i][2];
         res.send({ isLogin: true, name: name });
         break;
+      } else if (
+        //아이디는 맞는데 비번이 틀릴 경우
+        req.body.id === exist_user_arr[i][0] &&
+        req.body.pw !== exist_user_arr[i][1]
+      ) {
+        res.send({ isLogin: false });
       } else {
         continue;
       }
