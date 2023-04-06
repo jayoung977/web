@@ -24,3 +24,22 @@ SELECT * FROM visitor;
 -- 테이블 데이터 추가 (Cerate)
 INSERT INTO visitor (name, comment) VALUES("홍길동", "내가 왔다.");
 INSERT INTO visitor (name, comment) VALUES("이찬혁", "으라차차");
+
+SELECT * FROM mysql.user;
+CREATE USER 'user'@'%' IDENTIFIED BY '1234';
+GRANT ALL PRIVILEGES ON *.* TO 'user'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+-- 생성된 계정 정보 확인
+SELECT * FROM mysql.user;
+-- 사용자 추가 
+drop user 'user'@'localhost';
+
+CREATE USER 'user'@'localhost' IDENTIFIED BY '1234';
+-- user 계정 권한 부여
+GRANT ALL PRIVILEGES ON *.* TO 'user'@'%' WITH GRANT OPTION;
+-- 현재 사용중인 mysql 캐시 지우고 새로 적용
+FLUSH PRIVILEGES;
+
+
+SELECT * FROM mysql.user;

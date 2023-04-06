@@ -4,8 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>댓글 자세히 보기</title>
+    <title>Document</title>
+    <!-- axios cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
+
   <body>
     <form name="visitor-form">
       <fieldset>
@@ -13,11 +16,12 @@
         <input type="text" id="name" placeholder="사용자 이름" /> <br />
         <input type="text" id="comment" placeholder="방명록" /> <br />
         <div id="button-group">
-          <button type="button">등록</button>
+          <button type="button" onClick="createVisitor();">등록</button>
         </div>
       </fieldset>
     </form>
     <br />
+
     <table border="1" cellspacing="0">
       <thead>
         <tr>
@@ -44,5 +48,42 @@
         <% } %>
       </tbody>
     </table>
+
+    <script>
+      const tbody = document.querySelector("tbody");
+
+      // 폼 [등록] 버튼 클릭시
+      // - 테이블 데이터 추가
+
+      // (3) POST /visitor/write
+      function createVisitor() {
+        const form = document.forms["visitor-form"];
+
+        axios({
+          method: "POST",
+          url: "/visitor/write",
+          data: {
+            name: form.name.value,
+            comment: form.comment.value,
+          },
+        }).then((res) => {
+          //새로 입력된 데이터만 확인
+          console.log(res.data); // { id: n, name: 'xx', comment: 'yy' }
+          // 새로고침 말고 html에 새로 입력된 데이터 추가
+          const newVisitor = `
+            <tr id="tr_${res.data.id}">
+              <td>${res.data.id}</td>
+              <td>${res.data.name}</td>
+              <td>${res.data.comment}</td>
+              <td><button type="button">수정</button></td>
+              <td><button type="button">삭제</button></td>
+            </tr>`;
+
+          // insertAdjacentHTML(): 특정 요소에 html 추가 , jQuery.append()와 동일
+          // vs. innerHTML: 내부 코드 덮어씌움
+          tbody.insertAdjacentHTML("beforeend", newVisitor);
+        });
+      }
+    </script>
   </body>
 </html>
