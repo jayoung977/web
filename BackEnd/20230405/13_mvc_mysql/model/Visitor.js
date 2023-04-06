@@ -65,12 +65,38 @@ exports.postVisitor = (data, callback) => {
 exports.deleteVisitor = (id, callback) => {
   console.log("4-1. Visitor.js >>", id); //controller에서 넘겨주고 있는 req.body.id
 
-  const sql = `delete from visitor where id=${id}`;
+  const sql = `delete from visitor where id=${id};`;
   conn.query(sql, (err, rows) => {
     if (err) {
       throw err;
     }
     console.log("4-2. Visitor.js >>", rows);
     callback(true);
+  });
+};
+
+// (5) 수정  GET /visitor/get
+exports.getVisitor = (id, callback) => {
+  console.log("5-1. Visitor.js >>", id); //controller에서 넘겨주고 있는 req.body.id
+  const sql = `select * from visitor where id=${id};`;
+  conn.query(sql, (err, rows) => {
+    if (err) {
+      throw err;
+    }
+    console.log("5-2. Visitor.js >>", rows); // [ RowDataPacket { id: 10, name: '아리수', comment: '22' } ]
+    callback(rows[0]); //{ id: 10, name: '아리수', comment: '22' }
+  });
+};
+
+// (6) 수정  PATCH  /visitor/edit
+exports.patchVisitor = (data, callback) => {
+  console.log("6-1. Visitor.js >>", data); //controller 에서 넘겨주는 req.body
+  const sql = `update visitor set  name='${data.name}', comment='${data.comment}' where id=${data.id};`;
+  conn.query(sql, (err, rows) => {
+    if (err) {
+      throw err;
+    }
+    console.log("6-2. Visitor.js >>", rows);
+    callback();
   });
 };

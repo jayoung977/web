@@ -39,7 +39,9 @@
           <td><%= data[i].name %></td>
           <td><%= data[i].comment %></td>
           <td>
-            <button type="button">수정</button>
+            <button type="button" onclick="editVisitor(`<%=data[i].id %>`)">
+              수정
+            </button>
           </td>
           <td>
             <!-- (4) 삭제 DELETE /visitor/delete-->
@@ -57,8 +59,41 @@
 
     <script>
       const tbody = document.querySelector("tbody");
+      const buttonGroup = document.querySelector("#button-group");
 
-      //  (4) 삭제 "/visitor/delete"
+      //(3) 생성 POST /visitor/write
+      // 폼 [등록] 버튼 클릭시
+      // - 테이블 데이터 추가
+      function createVisitor() {
+        const form = document.forms["visitor-form"];
+
+        axios({
+          method: "POST",
+          url: "/visitor/write",
+          data: {
+            name: form.name.value,
+            comment: form.comment.value,
+          },
+        }).then((res) => {
+          //새로 입력된 데이터만 확인
+          console.log(res.data); // { id: n, name: 'xx', comment: 'yy' }
+          // 새로고침 말고 html에 새로 입력된 데이터 추가
+          const newVisitor = `
+            <tr id="tr_${res.data.id}">
+              <td>${res.data.id}</td>
+              <td>${res.data.name}</td>
+              <td>${res.data.comment}</td>
+              <td><button type="button" onclick="editVisitor(${res.data.id})">수정</button></td>
+              <td><button type="button" onclick="deleteVisitor(this,${res.data.id})">삭제</button></td>
+            </tr>`;
+
+          // insertAdjacentHTML(): 특정 요소에 html 추가 , jQuery.append()와 동일
+          // vs. innerHTML: 내부 코드 덮어씌움
+          tbody.insertAdjacentHTML("beforeend", newVisitor);
+        });
+      }
+
+      //(4) 삭제 DELETE /visitor/delete
       function deleteVisitor(obj, id) {
         console.log("obj", obj);
         console.log("id", id);
@@ -87,36 +122,74 @@
         });
       }
 
-      // (3) POST /visitor/write
-      // 폼 [등록] 버튼 클릭시
-      // - 테이블 데이터 추가
-      function createVisitor() {
+      //(5) 수정  GET /visitor/get
+      //(5)-1 클릭한 값 조회
+      //(5)-2 form input 값 넣기
+      //(5)-3 [변경], [취소] 버튼 보여주기
+      function editVisitor(id) {
+        console.log(id);
+        axios({
+          method: "GET",
+          url: "/visitor/get",
+          params: {
+            id: id,
+          },
+        }).then((res) => {
+          //(5)-1 클릭한 값 조회
+          console.log(res.data); //rows[0] { id: 10, name: '아리수', comment: '22' }
+
+          //(5)-2 form input 값 넣기
+          const form = document.forms["visitor-form"];
+          form.name.value = res.data.name; //input[name='name']에 value 설정
+          form.comment.value = res.data.comment; //input[name='comment']에 value 설정
+
+          //(5)-3 [변경], [취소] 버튼 보여주기 (buttonGroup에 덮어씌움)
+          const btns = `
+          <button type='button' onclick='editDo(${id})'>변경</button>
+          <button type='button' onclick='editCancel()'>취소</button>
+          `;
+          buttonGroup.innerHTML = btns;
+        });
+      }
+
+      //(6) = (5)-4. [변경] 버튼 눌렀을 떄 데이터 수정
+      //(6) 수정  PATCH  /visitor/edit
+      function editDo(id) {
         const form = document.forms["visitor-form"];
 
         axios({
-          method: "POST",
-          url: "/visitor/write",
+          method: "PATCH",
+          url: "/visitor/edit",
           data: {
+            id: id,
             name: form.name.value,
             comment: form.comment.value,
           },
         }).then((res) => {
-          //새로 입력된 데이터만 확인
-          console.log(res.data); // { id: n, name: 'xx', comment: 'yy' }
-          // 새로고침 말고 html에 새로 입력된 데이터 추가
-          const newVisitor = `
-            <tr id="tr_${res.data.id}">
-              <td>${res.data.id}</td>
-              <td>${res.data.name}</td>
-              <td>${res.data.comment}</td>
-              <td><button type="button">수정</button></td>
-              <td><button type="button" onclick="deleteVisitor(this,${res.data.id})">삭제</button></td>
-            </tr>`;
-
-          // insertAdjacentHTML(): 특정 요소에 html 추가 , jQuery.append()와 동일
-          // vs. innerHTML: 내부 코드 덮어씌움
-          tbody.insertAdjacentHTML("beforeend", newVisitor);
+          console.log(res.data);
+          //4-1. 수정성공 메세지 띄우기
+          alert(res.data);
+          //4-2. 수정내용 반영
+          const children = document.querySelector(`#tr_${id}`).children;
+          // console.log(children); //[td, td, td, td, td]
+          children[1].textContent = form.name.value;
+          children[2].textContent = form.comment.value;
         });
+        //TODO: 수정 이후 input 초기화
+      }
+
+      //(5)-5. [취소] 버튼 눌렀을 떄
+      //(5)-5-1. input 초기화
+      //(5)-5-2. [등록] 버튼 보이기
+      function editCancel() {
+        //5-1. input 초기화
+        const form = document.forms["visitor-form"];
+        form.name.value = "";
+        form.comment.value = "";
+
+        //5-2. [등록] 버튼 보이기
+        const btns = `<button type='button' onclick='createVisitor()'>등록</button>`;
+        buttonGroup.innerHTML = btns;
       }
     </script>
   </body>

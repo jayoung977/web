@@ -39,3 +39,21 @@ exports.deleteVisitor = (req, res) => {
     res.send("삭제 성공!!");
   });
 };
+
+// (5) 수정  GET /visitor/get
+exports.getVisitor = (req, res) => {
+  console.log("5-1. Cvisitor.js >>", req.query); //{id:n}
+
+  Visitor.getVisitor(req.query.id, (result) => {
+    console.log("5-2. Cvisitor.js >>", result); //model 코드에서 callback에 넘긴 rows[0]
+    res.send(result); //{ id: 10, name: '아리수', comment: '22' }
+  });
+};
+
+// (6) 수정  PATCH  /visitor/edit
+exports.patchVisitor = (req, res) => {
+  console.log("6-1. Cvisitor.js >>", req.body);
+  Visitor.patchVisitor(req.body, () => {
+    res.send("수정 성공!");
+  });
+};
