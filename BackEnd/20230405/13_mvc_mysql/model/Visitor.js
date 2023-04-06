@@ -59,3 +59,18 @@ exports.postVisitor = (data, callback) => {
     callback(rows.insertId);
   });
 };
+
+// (4) 삭제 DELETE /visitor/delete
+
+exports.deleteVisitor = (id, callback) => {
+  console.log("4-1. Visitor.js >>", id); //controller에서 넘겨주고 있는 req.body.id
+
+  const sql = `delete from visitor where id=${id}`;
+  conn.query(sql, (err, rows) => {
+    if (err) {
+      throw err;
+    }
+    console.log("4-2. Visitor.js >>", rows);
+    callback(true);
+  });
+};

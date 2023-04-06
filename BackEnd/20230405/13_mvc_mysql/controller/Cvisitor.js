@@ -30,3 +30,12 @@ exports.postVisitor = (req, res) => {
     res.send({ id: result, name: req.body.name, comment: req.body.comment });
   });
 };
+
+// (4) 삭제 DELETE /visitor/delete
+exports.deleteVisitor = (req, res) => {
+  console.log("4-1. Cvisitor.js >>", req.body); //{id:n}
+  Visitor.deleteVisitor(req.body.id, (result) => {
+    console.log("4-2. Cvisitor.js >>", result);
+    res.send("삭제 성공!!");
+  });
+};
