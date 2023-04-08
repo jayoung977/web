@@ -77,7 +77,7 @@ exports.editProfile = (data, callback) => {
 exports.deleteProfile = (data, callback) => {
   console.log("(3)-4-1. User.js >>", data.id);
 
-  const sql = `delete from user where id=${data.id};`;
+  const sql = `delete from user where id='${data.id}';`;
   conn.query(sql, (err, rows) => {
     if (err) {
       throw err;
