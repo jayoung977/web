@@ -5,8 +5,79 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="../static/css/common.css" />
     <!-- axios cdn -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+      form {
+        margin-top: 2rem;
+      }
+      form fieldset {
+        border-radius: 5px;
+        width: 200px;
+        background-color: antiquewhite;
+        box-shadow: -3px -6px 10px inset #0000006d;
+      }
+      form fieldset legend {
+        text-align: center;
+        font-weight: 700;
+        background-color: white;
+        border: 1px solid black;
+        padding: 1px 5px;
+        margin-bottom: 5px;
+      }
+      form fieldset input,
+      div {
+        margin-left: 5px;
+        margin-bottom: 5px;
+      }
+
+      form fieldset input {
+        width: 180px;
+      }
+      form fieldset div button {
+        padding: 2px;
+      }
+
+      table tbody td {
+        background-color: white;
+        padding: 5px;
+        border-bottom: 1px solid black;
+        border-right: 1px solid black;
+      }
+      /* table tbody tr:last-child td {
+        border-bottom: none;
+      } */
+      table tbody tr:last-child td:first-child {
+        border-radius: 0 0 0 20%;
+        /* border-bottom: 1px solid black; */
+      }
+      table tbody tr:last-child td:last-child {
+        border-radius: 0 0 20% 0;
+        /* border-bottom: 1px solid black; */
+      }
+      table thead {
+        background-color: antiquewhite;
+      }
+      table thead tr th {
+        padding: 5px;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        border-right: 1px solid black;
+      }
+      table thead tr th:first-child {
+        border-radius: 20% 0 0 0;
+        border-left: 1px solid black;
+      }
+      table thead tr th:last-child {
+        border-radius: 0 20% 0 0;
+      }
+      table tr td:first-child {
+        background-color: antiquewhite;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+      }
+    </style>
   </head>
 
   <body>
@@ -22,7 +93,7 @@
     </form>
     <br />
 
-    <table border="1" cellspacing="0">
+    <table cellspacing="0">
       <thead>
         <tr>
           <th>ID</th>

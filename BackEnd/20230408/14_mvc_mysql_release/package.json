@@ -1,8 +1,8 @@
 {
-  "name": "13_mvc_mysql",
+  "name": "15_mvc_mysql_practice",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js"
@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "ejs": "^3.1.9",
+    "ejs": "^3.1.8",
     "express": "^4.18.2",
     "mysql": "^2.18.1",
     "mysql2": "^3.2.0",
