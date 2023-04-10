@@ -1,0 +1,102 @@
+a {
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+  text-decoration: none;
+  color: black;
+  font-weight: 700;
+  background-color: rgb(176, 208, 221);
+  border-radius: 5px;
+  padding: 10px;
+  width: 100px;
+  text-align: center;
+  box-shadow: -3px -6px 10px inset #0000006d;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url(../img/hamster.jpeg);
+  background-size: cover;
+}
+
+h1 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  color: antiquewhite;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
+@media screen and (max-width: 650px) {
+  * {
+    margin: 0;
+    padding: 0;
+    font-family: "BMJUA";
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(../img/hamster.jpeg);
+    background-size: cover;
+  }
+  h1 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    color: antiquewhite;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  }
+  a {
+    margin-top: 1rem;
+    text-decoration: none;
+    color: black;
+    background-color: rgb(176, 208, 221);
+    display: block;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    font-size: 1rem;
+    color: black;
+    font-weight: 700;
+    box-shadow: -3px -6px 10px inset #0000006d;
+  }
+  /* #first-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 12px;
+    }
+    #first-head > nav > .navbar__menu {
+      display: none;
+    }
+    #first-head > .navbar__toggleBtn {
+      display: block;
+    }
+    .aside_sidebar {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      height: 90px;
+    }
+  
+    .sidebar__menu {
+      list-style-type: none;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      background-color: blanchedalmond;
+    }
+    .sidebar__menu li {
+      width: 100%;
+      text-align: center;
+      padding-top: 10px;
+    }
+    .sidebar__menu li:last-child {
+      padding-bottom: 10px;
+    }
+  
+    .sidebar__menu.active,
+    .aside_sidebar.active {
+      display: flex;
+    } */
+}

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/css/common.css" />
+    <!-- axios cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+      form fieldset {
+        border-radius: 5px;
+        width: 200px;
+        background-color: antiquewhite;
+        box-shadow: -3px -6px 10px inset #0000006d;
+      }
+      form fieldset legend {
+        text-align: center;
+        font-weight: 700;
+        background-color: white;
+        border: 1px solid black;
+        padding: 1px 5px;
+        margin-bottom: 5px;
+      }
+      form fieldset input,
+      div {
+        margin-left: 5px;
+        margin-bottom: 5px;
+      }
+
+      form fieldset input {
+        width: 180px;
+      }
+      form fieldset div button {
+        padding: 2px;
+      }
+
+      table tbody td {
+        background-color: white;
+        padding: 5px;
+        border-bottom: 1px solid black;
+        border-right: 1px solid black;
+      }
+      /* table tbody tr:last-child td {
+        border-bottom: none;
+      } */
+      table tbody tr:last-child td:first-child {
+        border-radius: 0 0 0 20%;
+        /* border-bottom: 1px solid black; */
+      }
+      table tbody tr:last-child td:last-child {
+        border-radius: 0 0 20% 0;
+        /* border-bottom: 1px solid black; */
+      }
+      table thead {
+        background-color: antiquewhite;
+      }
+      table thead tr th {
+        padding: 5px;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        border-right: 1px solid black;
+      }
+      table thead tr th:first-child {
+        border-radius: 20% 0 0 0;
+        border-left: 1px solid black;
+      }
+      table thead tr th:last-child {
+        border-radius: 0 20% 0 0;
+      }
+      table tr td:first-child {
+        background-color: antiquewhite;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>방명록 등록</h1>
+    <form name="visitor-form">
+      <fieldset>
+        <legend>방명록 등록</legend>
+        <input type="text" id="name" placeholder="사용자 이름" /> <br />
+        <input type="text" id="comment" placeholder="방명록" /> <br />
+        <div id="button-group">
+          <button type="button" onclick="createVisitor();">등록</button>
+        </div>
+      </fieldset>
+    </form>
+    <br />
+
+    <table cellspacing="0">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>작성자</th>
+          <th>방명록</th>
+          <th>수정</th>
+          <th>삭제</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (let i = 0; i < data.length; i++) { %>
+        <tr id="tr_<%= data[i].id %>">
+          <td><%= data[i].id %></td>
+          <td><%= data[i].name %></td>
+          <td><%= data[i].comment %></td>
+          <td>
+            <button type="button" onclick="editVisitor(`<%=data[i].id %>`)">
+              수정
+            </button>
+          </td>
+          <td>
+            <!-- (4) 삭제 DELETE /visitor/delete-->
+            <button
+              type="button"
+              onclick="deleteVisitor(this,`<%=data[i].id %>`);"
+            >
+              삭제
+            </button>
+          </td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+
+    <script>
+      const tbody = document.querySelector("tbody");
+      const buttonGroup = document.querySelector("#button-group");
+
+      //(3) 생성 POST /visitor/write
+      // 폼 [등록] 버튼 클릭시
+      // - 테이블 데이터 추가
+      function createVisitor() {
+        const form = document.forms["visitor-form"];
+
+        axios({
+          method: "POST",
+          url: "/visitor/write",
+          data: {
+            name: form.name.value,
+            comment: form.comment.value,
+          },
+        }).then((res) => {
+          //새로 입력된 데이터만 확인
+          console.log(res.data); // { id: n, name: 'xx', comment: 'yy' }
+          // 새로고침 말고 html에 새로 입력된 데이터 추가
+          const newVisitor = `
+            <tr id="tr_${res.data.id}">
+              <td>${res.data.id}</td>
+              <td>${res.data.name}</td>
+              <td>${res.data.comment}</td>
+              <td><button type="button" onclick="editVisitor(${res.data.id})">수정</button></td>
+              <td><button type="button" onclick="deleteVisitor(this,${res.data.id})">삭제</button></td>
+            </tr>`;
+
+          // insertAdjacentHTML(): 특정 요소에 html 추가 , jQuery.append()와 동일
+          // vs. innerHTML: 내부 코드 덮어씌움
+          tbody.insertAdjacentHTML("beforeend", newVisitor);
+        });
+      }
+
+      //(4) 삭제 DELETE /visitor/delete
+      function deleteVisitor(obj, id) {
+        console.log("obj", obj);
+        console.log("id", id);
+        //alert는 확인버튼만 confirm은 확인, 취소 버튼 2개
+        // !false = true
+
+        if (!confirm("정말 삭제하시겠습니까?")) {
+          return;
+        }
+
+        // confirm에서 [확인] 버튼 클릭 시 실행할 코드
+        axios({
+          method: "DELETE",
+          url: "/visitor/delete",
+          data: {
+            id: id, //매개변수로 받고 있는 id
+          },
+        }).then((res) => {
+          console.log(res.data); //삭제 성공!!
+          console.log(`tr_${id}`);
+          document.getElementById(`tr_${id}`).remove();
+
+          //삭제하는 다른 방법
+          //obj.parentElement.parentElement.remove();
+          //obj.closest(`#tr_${id}`).remove(); //가장 가까운 선택자 찾아감
+        });
+      }
+
+      //(5) 수정  GET /visitor/get
+      //(5)-1 클릭한 값 조회
+      //(5)-2 form input 값 넣기
+      //(5)-3 [변경], [취소] 버튼 보여주기
+      function editVisitor(id) {
+        console.log(id);
+        axios({
+          method: "GET",
+          url: "/visitor/get",
+          params: {
+            id: id,
+          },
+        }).then((res) => {
+          //(5)-1 클릭한 값 조회
+          console.log(res.data); //rows[0] { id: 10, name: '아리수', comment: '22' }
+
+          //(5)-2 form input 값 넣기
+          const form = document.forms["visitor-form"];
+          form.name.value = res.data.name; //input[name='name']에 value 설정
+          form.comment.value = res.data.comment; //input[name='comment']에 value 설정
+
+          //(5)-3 [변경], [취소] 버튼 보여주기 (buttonGroup에 덮어씌움)
+          const btns = `
+          <button type='button' onclick='editDo(${id})'>변경</button>
+          <button type='button' onclick='editCancel()'>취소</button>
+          `;
+          buttonGroup.innerHTML = btns;
+        });
+      }
+
+      //(6) = (5)-4. [변경] 버튼 눌렀을 떄 데이터 수정
+      //(6) 수정  PATCH  /visitor/edit
+      async function editDo(id) {
+        const form = document.forms["visitor-form"];
+        //1.db 수정
+        await axios({
+          method: "PATCH",
+          url: "/visitor/edit",
+          data: {
+            id: id,
+            name: form.name.value,
+            comment: form.comment.value,
+          },
+        }).then((res) => {
+          //4-1. 수정성공 메세지 띄우기
+          alert("수정완료");
+          //4-2. 수정내용 반영
+          const children = document.querySelector(`#tr_${id}`).children;
+          // console.log(children); //[td, td, td, td, td]
+          children[1].textContent = form.name.value;
+          children[2].textContent = form.comment.value;
+        });
+        //TODO: 수정 이후 input 초기화 -> async await
+        //2. input
+        editCancel();
+      }
+
+      //(5)-5. [취소] 버튼 눌렀을 떄
+      //(5)-5-1. input 초기화
+      //(5)-5-2. [등록] 버튼 보이기
+      function editCancel() {
+        //5-1. input 초기화
+        const form = document.forms["visitor-form"];
+        form.name.value = "";
+        form.comment.value = "";
+
+        //5-2. [등록] 버튼 보이기
+        const btns = `<button type='button' onclick='createVisitor()'>등록</button>`;
+        buttonGroup.innerHTML = btns;
+      }
+    </script>
+  </body>
+</html>
