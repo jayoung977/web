@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('include', { title: '로그인' }) %>
+    <link rel="stylesheet" href="/static/login.css" />
+  </head>
+
+  <body>
+    <div class="login-box">
+      <h1>로그인</h1>
+      <p>정답 아이디: banana / 비번: 1234</p>
+
+      <form action="/login" method="POST">
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="id">ID</span>
+          <!-- name 반드시 -->
+          <input
+            name="id"
+            type="text"
+            class="form-control"
+            aria-label="id input"
+            aria-describedby="id"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="pw">PW</span>
+          <input
+            name="pw"
+            type="password"
+            class="form-control"
+            aria-label="pw input"
+            aria-describedby="pw"
+          />
+        </div>
+        <!-- 일반 폼 전송시 type:submit -->
+        <button type="submit" class="btn btn-warning mb-3">로그인</button>
+        <br />
+        <a href="/">홈으로 이동하기</a>
+      </form>
+    </div>
+  </body>
+</html>
