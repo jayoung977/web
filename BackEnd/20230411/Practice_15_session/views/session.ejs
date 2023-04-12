@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- fontawesome -->
+    <script
+      src="https://kit.fontawesome.com/986f9d8077.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- common.css -->
+    <link rel="stylesheet" href="../static/common.css" />
+    <!-- common.js -->
+    <script defer src="../static/common.js"></script>
+  </head>
+  <body>
+    <!-- <h1>세션</h1> -->
+
+    <!-- <a href="/set">세션 설정</a>
+    <a href="/name">세션 확인</a>
+    <a href="/destroy">세션 삭제</a> -->
+    <header id="first-head">
+      <div class="brand-logo">
+        <div class="brand-name">
+          <a href="/">코딩온</a>
+        </div>
+      </div>
+      <nav>
+        <ul class="navbar__menu">
+          <li class="menu-item">
+            <a href="/Menu1">Menu1</a>
+          </li>
+          <li class="menu-item">
+            <a href="/Menu2">Menu2</a>
+          </li>
+          <li class="menu-item">
+            <a class="login" href="/Login">Login</a>
+          </li>
+        </ul>
+      </nav>
+      <a href="#" class="navbar__toggleBtn"><i class="fa-solid fa-bars"></i></a>
+    </header>
+
+    <aside class="aside_sidebar">
+      <nav>
+        <ul class="sidebar__menu">
+          <li class="menu-item">
+            <a href="/Menu1">Menu1</a>
+          </li>
+          <li class="menu-item">
+            <a href="/Menu2">Menu2</a>
+          </li>
+          <li class="menu-item">
+            <a class="login" href="/Login">Login</a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <br />
+    <div style="font-size: 2rem; padding-left: 1rem">실습. Session 연습</div>
+    <br />
+    <div style="font-size: 1rem; padding-left: 1rem">
+      <p>여기는 Home 입니다! 🏡</p>
+      <br />
+      <p class="login-p">
+        로그인을 아직 하지 않으셨군요! 로그인을 진행해보세요!
+      </p>
+    </div>
+  </body>
+  <script>
+    console.log(typeof name);
+    if (typeof name !== undefined) {
+      if ("<%=name%>" !== "") {
+        const name = "<%=name%>";
+        document.querySelector(
+          ".login-p"
+        ).textContent = `${name}님! 환영합니다 😁`;
+        document.querySelectorAll(".login")[0].textContent = "Logout";
+        document.querySelectorAll(".login")[1].textContent = "Logout";
+      }
+    }
+  </script>
+</html>

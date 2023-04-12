@@ -1,0 +1,126 @@
+@font-face {
+  font-family: "BMJUA";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "BMJUA";
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+#first-head {
+  position: relative;
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  background-color: blanchedalmond;
+}
+#first-head .brand-logo {
+  margin-left: 20px;
+}
+#first-head .brand-logo:hover {
+  cursor: pointer;
+}
+#first-head .brand-logo .brand-name a {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+#first-head .brand-logo .brand-script a {
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+#first-head .brand-logo .brand-script a b {
+  color: #fe5b05;
+}
+#first-head .page-name {
+  font-weight: 700;
+  font-size: 2rem;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#first-head nav {
+  width: 220px;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-right: 20px;
+  margin-left: 10px;
+}
+#first-head > nav > ul {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  column-gap: 5px;
+}
+
+#first-head > .navbar__toggleBtn {
+  display: none;
+  margin-right: 20px;
+  position: absolute;
+  right: 32px;
+  font-size: 24px;
+}
+
+.aside_sidebar {
+  display: none;
+}
+
+@media screen and (max-width: 650px) {
+  #first-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+  }
+  #first-head > nav > .navbar__menu {
+    display: none;
+  }
+  #first-head > .navbar__toggleBtn {
+    display: block;
+  }
+  .aside_sidebar {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    height: 90px;
+  }
+
+  .sidebar__menu {
+    list-style-type: none;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgba(255, 231, 205, 0.804); */
+    border: 1px solid #dddddd;
+  }
+  .sidebar__menu li {
+    width: 100%;
+    text-align: center;
+    padding-top: 10px;
+  }
+  .sidebar__menu li:last-child {
+    padding-bottom: 10px;
+  }
+
+  .sidebar__menu.active,
+  .aside_sidebar.active {
+    display: flex;
+  }
+}
+
+main {
+  width: 80%;
+  margin: 0 auto;
+}
