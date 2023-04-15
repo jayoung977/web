@@ -11,66 +11,6 @@ socket.on("connect", () => {
   console.log("⭕ Client Socket Connected>>", socket.id);
 });
 
-// [실습1] 각 버튼을 누를 때 마다 서버로 메세지 보내기
-//1.sayHello()
-// function sayHello() {
-//   // 1-1.client -> server 정보 보내기
-//   // 함수명은 사용자 지정
-//   // socket.emit(event, data): 데이터 "전송"
-//   //=> event 라는 이름으로 data 를 전송
-//   socket.emit("hello", { who: "client", msg: "hello" });
-
-//   //1-4.server -> client 받음
-//   socket.on("helloKr", (data) => {
-//     document.querySelector(
-//       "#form-server"
-//     ).textContent = `${data.who}: ${data.msg}`;
-//   });
-
-//   //app.js 의 socket.on(event, callback )에서 데이터 받음
-//   //event에 대해서 정보를 받아 callback함수 실행
-// }
-// //2.sayStudy()
-// function sayStudy() {
-//   // 2-1.client -> server 정보 보내기
-//   socket.emit("study", { who: "client", msg: "study" });
-//   // 2-4.server -> client 받음
-//   socket.on("studyKr", (data) => {
-//     document.querySelector(
-//       "#form-server"
-//     ).textContent = `${data.who}: ${data.msg}`;
-//   });
-// }
-// //3.sayBye()
-// function sayBye() {
-//   // 3-1.client -> server 정보 보내기
-//   socket.emit("bye", { who: "client", msg: "bye" });
-//   // 3-4.server -> client 받음
-//   socket.on("byeKr", (data) => {
-//     console.log("byeKr data>>", data);
-//     document.querySelector(
-//       "#form-server"
-//     ).textContent = `${data.who}: ${data.msg}`;
-//   });
-// }
-// [실습2] 각 버튼을 누를 때 마다 서버로 메세지 보내기
-// function getvalue() {
-//   const chatmsg = document.querySelector("#message").value;
-//   console.log("chatmsg>>", chatmsg);
-//   socket.emit("chatmsg", { who: "나", msg: chatmsg });
-//   socket.off("chatmsgSd");
-//   socket.on("chatmsgSd", (data) => {
-//     console.log("chatmsgSd data>>", data);
-//     const newComment = `<div class="my-chat">
-//         <div>${data.who}: ${data.msg}</div>
-//     </div>`;
-
-//     const chatList = document.querySelector(".chat-list");
-//     chatList.insertAdjacentHTML("beforeend", newComment);
-//     document.querySelector("#message").value = "";
-//   });
-// }
-
 // [실습3] 채팅창 입장/퇴장 안내 문구
 socket.on("notice", (msg) =>
   document
@@ -79,23 +19,25 @@ socket.on("notice", (msg) =>
 );
 
 // [실습3-2] entry -> 서버
-function entry() {
-  console.log(document.querySelector("#nickname").value);
-  if (document.querySelector("#nickname").value !== "") {
-    socket.emit("setNick", document.querySelector("#nickname").value);
-  } else {
-    alert("닉네임을 입력해주세요.");
-  }
-}
+socket.emit("setNick", userid);
+
+// function entry() {
+//   console.log(document.querySelector("#nickname").value);
+//   if (document.querySelector("#nickname").value !== "") {
+//     socket.emit("setNick", document.querySelector("#nickname").value);
+//   } else {
+//     alert("닉네임을 입력해주세요.");
+//   }
+// }
 // [실습3-2]  서버 -> entrySuccess
 socket.on("entrySuccess", (nick) => {
   //1. 내 닉네임 설정
   myNick = nick;
   //2. 닉네임 입력창 & 버튼 비활성화
-  document.querySelector("#nickname").disabled = true; //입력창 비활성화 (클릭 막기)
-  document.querySelector(".entry-box > button").disabled = true; //버튼 비활성화(클릭 막기)
+  // document.querySelector("#nickname").disabled = true; //입력창 비활성화 (클릭 막기)
+  // document.querySelector(".entry-box > button").disabled = true; //버튼 비활성화(클릭 막기)
   //3. div.chat-box 요소 보이기
-  document.querySelector(".chat-box").classList.remove("d-none");
+  // document.querySelector(".chat-box").classList.remove("d-none");
 });
 // [실습3-2]  서버 -> error 받음
 // 닉네임 중복 -> alert 띄우기
@@ -111,7 +53,9 @@ socket.on("updateNicks", (obj) => {
   for (let key in obj) {
     // obj[key] : 유저가 인풋에 입력한 닉네임
     // key: 소켓 아이디
-    options += `<option value = "${key}">${obj[key]}</option>`;
+    if (obj[key] !== myNick) {
+      options += `<option value = "${key}">${obj[key]}</option>`;
+    }
   }
 
   console.log(options);
@@ -178,7 +122,7 @@ socket.on("newMessage", (data) => {
   //아닐 경우   divChat.textContent = '' + 누가 : 메세지
 
   //3. divChat 을 div 요소에 추가
-  //div을 chatList에 추가
+  //div을 chatList에
   div.append(divChat); //   div.append(divChat); 도 됨
   console.log(div);
   chatlist.append(div); //   chatlist.append(div); 도 됨

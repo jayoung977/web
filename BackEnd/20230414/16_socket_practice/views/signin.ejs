@@ -1,40 +1,46 @@
-<!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="h-100">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>로그인</title>
-    <link rel="stylesheet" href="../static/css/common.css" />
-    <!-- axios -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <%- include('include/include', { title: 'Signin' })%>
   </head>
-  <body>
-    <h1>로그인</h1>
-    <!-- 
+  <body class="d-flex h-100 text-center text-bg-dark">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <%- include('include/include_nav')%>
+      <main class="px-3">
+        <h1>로그인</h1>
+        <!-- 
       [로그인] 버튼을 클릭하면 profile.ejs(회원정보 수정 페이지)에서 
       특정 유저 정보를 보여주어야 하기 때문에 
       userid 정보를 value에 저장(POST /user/signin 요청의 응답을 받은 후 수행)하여
       폼(input)이 보이지 않도록 hidden 처리함
     -->
-    <!-- <form name="form_info" action="/user/profile" method="POST">
-      <input type="hidden" name="userid" />
-    </form> -->
-    <form name="form_info" action="/chat" method="POST">
-      <input type="hidden" name="userid" />
-    </form>
+        <form name="form_info" action="/user/profile" method="POST">
+          <input type="hidden" name="userid" />
+        </form>
+        <form name="form_info2chat" action="/chat" method="POST">
+          <input type="hidden" name="userid" />
+        </form>
 
-    <form name="form_login" class="form_login">
-      <label for="userid">ID</label>
-      <input id="userid" type="text" name="userid" required /><br />
-      <label for="password">Password</label>
-      <input id="password" type="password" name="pw" required /><br />
-      <button type="button" onclick="login();">Login</button>
-    </form>
+        <form name="form_login" class="form_login">
+          <label for="userid"> ID </label>
+          <input id="userid" type="text" name="userid" required /><br />
+          <label for="password">Password</label>
+          <input id="password" type="password" name="pw" required /><br />
+          <button type="button" onclick="login();">Login</button>
+        </form>
 
-    <a href="/user/signup">Register</a>
+        <a href="/user/signup">signup</a>
+      </main>
+      <%- include('include/include_footer')%>
+    </div>
 
     <script>
+      // 로그인 a태그 클래스 active
+      document.querySelectorAll("a")[1].classList.add("active");
+      // 홈 클래스 a태그 active 지우기
+      for (let i of [0, 2])
+        if (document.querySelectorAll("a")[i].classList.contains("active")) {
+          document.querySelectorAll("a")[i].classList.remove("active");
+        }
       function login() {
         const form_login = document.forms["form_login"];
 
@@ -60,8 +66,15 @@
               // true
               // (1) alert 띄우기
               console.log("confirm");
-              if (confirm("로그인 성공 \n 회원정보 수정을 원하십니까?")) {
-                location.href = "/user/profile";
+              if (!confirm("로그인 성공 \n회원정보 수정을 원하십니까?")) {
+                //아니요 ->chat
+                const form_info2chat = document.forms["form_info2chat"];
+                form_info2chat.userid.value = form_login.userid.value;
+                console.log(
+                  "form_info2chat.userid.value>>>",
+                  form_info2chat.userid.value
+                );
+                form_info2chat.submit();
               } else {
                 // (2) form_info 폼 선택
                 const form_info = document.forms["form_info"];

@@ -15,9 +15,10 @@
 #chat-list {
   background-color: rgb(190, 205, 222);
   padding: 10px;
-  width: 50%;
+  width: 80%;
   height: 500px;
   overflow-y: auto;
+  margin: 0 auto;
 }
 
 .chat-list div {
@@ -32,18 +33,23 @@
 .my-chat {
   text-align: right;
 }
-
+.other-chat {
+  text-align: left;
+}
 .my-chat div {
   background-color: rgb(251, 229, 77);
+  color: black;
 }
 
 .other-chat div {
   background-color: white;
+  color: black;
 }
 
 /* DM */
 .secret-chat div {
   background-color: plum;
+  color: black;
 }
 /* [실습 3] */
 .notice {

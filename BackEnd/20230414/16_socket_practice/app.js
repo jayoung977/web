@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const http = require("http").Server(app);
 const io = require("socket.io")(http);
+const session = require("express-session");
 const PORT = 8001;
 
 app.set("view engine", "ejs");
@@ -9,7 +10,13 @@ app.use("/views", express.static(__dirname + "/views"));
 app.use("/static", express.static(__dirname + "/static"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
+app.use(
+  session({
+    secret: "secretKey",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 // [라우터 분리]
 const indexRouter = require("./routes/index");
 app.use("/", indexRouter);
@@ -64,19 +71,20 @@ io.on("connection", (socket) => {
   socket.on("setNick", (nick) => {
     console.log("socket on setNick>> ", nick); //프론트에서 입력한 닉네임 값
 
-    //닉네임 중복 여부
-    //Object.values(nickObj) -> 값들을 리스트로 만듦
-    if (Object.values(nickObj).indexOf(nick) > -1) {
-      //아이디 중복
-      socket.emit("error", "이미 존재하는 닉네임입니다. 다시 입력해주세요.");
-    } else {
-      //아이디 통과
-      nickObj[socket.id] = nick; //nickObj 객체에 '소캣아이디: 닉네임' 추가
-      io.emit("notice", `${nick}님이 입장하셨습니다.`); //입장 메세지 "전체 공지"
-      //전체 공지 => 서버에 접속한 모든 클라이언트에게 이벤트 전송
-      socket.emit("entrySuccess", nick); //입장 성공시
-      updateNickList(); // 닉네임 리스트 객체 업데이트
-    }
+    // //닉네임 중복 여부
+    // //Object.values(nickObj) -> 값들을 리스트로 만듦
+    // if (Object.values(nickObj).indexOf(nick) > -1) {
+    //   //아이디 중복
+    //   socket.emit("error", "이미 존재하는 닉네임입니다. 다시 입력해주세요.");
+    // } else {
+    //   //아이디 통과
+    nickObj[socket.id] = nick; //nickObj 객체에 '소캣아이디: 닉네임' 추가
+
+    io.emit("notice", `${nick}님이 입장하셨습니다.`); //입장 메세지 "전체 공지"
+    //전체 공지 => 서버에 접속한 모든 클라이언트에게 이벤트 전송
+    socket.emit("entrySuccess", nick); //입장 성공시
+    updateNickList(); // 닉네임 리스트 객체 업데이트
+    // }
   });
   //[실습 3-3] 접속자 퇴장
   // 퇴장 이벤트 이름 고정되어 있음 'disconnect'
@@ -105,9 +113,15 @@ io.on("connection", (socket) => {
     //[실습 5] DM 기능 구현
     //만약 DM이라면 -> 특정 socket.id에게만 메세지 전달 {nick, dm, msg}
     //만약 DM이 아니면 -> 전체 공지 {nick, msg}
-    if (obj.dm !== "all") {
+    //0.자기자신 dm 제외
+    if (obj.dm !== "all" && nickObj[obj.dm] !== obj.myNick) {
       let dmSocketId = obj.dm; //각 닉네임에 해당하는 socket.id
-      const sendData = { nick: obj.myNick, dm: "(속닥속닥) ", msg: obj.msg };
+      const sendData = {
+        nick: obj.myNick,
+        dm: `(속닥속닥) `,
+        msg: obj.msg,
+      };
+
       // 1. DM을 보내고자 하는 socket.id한테 메세지 전송(상대방)
       io.to(dmSocketId).emit("newMessage", sendData);
       // 2. DM을 보내고 있는 자기자신 메세지 전송

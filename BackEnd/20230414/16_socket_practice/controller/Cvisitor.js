@@ -4,7 +4,14 @@ const models = require("../models");
 
 // (1) GET /
 exports.main = (req, res) => {
-  res.render("index");
+  console.log("main GET / req.session>> ", req.session);
+  const userSession = req.session.userid;
+  // console.log("main GET / userSession>> ", userSession);
+  if (userSession !== undefined) {
+    res.render("index", { isLogin: true, userid: userSession });
+  } else {
+    res.render("index", { isLogin: false });
+  }
 };
 
 // (2) 조회 GET /visitor
@@ -18,7 +25,14 @@ exports.getVisitors = async (req, res) => {
   // ver2. async/await 사용
   const result = await models.Visitor.findAll();
   console.log("(2) Cvisitor.js findAll >> ", result); // [ {}, {}, {}, {} ]
-  res.render("visitor", { data: result });
+  const userSession = req.session.userid;
+  console.log("(2) Cvisitor.js userSession >> ", userSession); // [ {}, {}, {}, {}
+  if (userSession !== undefined) {
+    res.render("visitor", { isLogin: true, data: result, userid: userSession });
+  } else {
+    // `손님_${req.session.slice(0, 5)}`
+    res.render("visitor", { isLogin: false, data: result, userid: "손님" });
+  }
 };
 
 // (3) 생성 POST /visitor/write async/await
