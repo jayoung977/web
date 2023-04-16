@@ -1,0 +1,60 @@
+<html lang="ko" class="h-100">
+  <head>
+    <%- include('include/include', { title: 'Chat' })%>
+    <!-- socket.io CDN -->
+    <script
+      src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+      integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+      crossorigin="anonymous"
+    ></script>
+    <!-- index.css -->
+    <link rel="stylesheet" href="/static/css/chat.css" />
+  </head>
+  <body class="d-flex h-100 text-center text-bg-dark">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <%- include('include/include_nav')%>
+      <main class="px-3">
+        <h1>채팅</h1>
+        <p style="color: rgb(251, 229, 77)"><%=userid%>님 환영합니다!</p>
+        <!-- [실습3-2] 채팅창 입장 안내 문구 socket.id -> nickname-->
+        <!-- <div class="entry-box">
+          <input
+            type="text"
+            id="nickname"
+            placeholder="Nickname"
+            autofocus
+            onkeypress="if(event.keyCode==13){entry()}"
+          />
+          <button type="button" onclick="entry();">입장</button>
+        </div> -->
+
+        <div class="chat-box text-center">
+          <div id="chat-list" class="chat-list"></div>
+          <br />
+          <select id="nick-list"></select
+          >에게
+          <input
+            type="text"
+            id="message"
+            onkeypress="if(event.keyCode==13){
+              send()}"
+          />
+          <button type="button" id="message-button" onclick="send();">
+            전송
+          </button>
+        </div>
+        <a href="/">나가기</a>
+      </main>
+      <%- include('include/include_footer')%>
+    </div>
+    <script>
+      const userid = "<%= userid%>";
+      for (let i of [0, 1, 2])
+        if (document.querySelectorAll("a")[i].classList.contains("active")) {
+          document.querySelectorAll("a")[i].classList.remove("active");
+        }
+    </script>
+    <!-- index.js -->
+    <script defer src="../static/js/chat.js"></script>
+  </body>
+</html>
