@@ -24,7 +24,9 @@ app.get("/", (req, res) => {
   const userSession = req.session.user;
   // user 값이 없다면; undefined
   // user 값이 있다면; 로그인한 아이디 값
-  console.log("userSession >> ", userSession);
+  console.log("1-req.session >> ", req.session);
+  console.log("1-req.sessionID >> ", req.sessionID);
+  console.log("1-userSession >> ", userSession);
   //세션이 있으면 로그인 여부(true/false)
   if (userSession !== undefined) {
     res.render("index", { isLogin: true, user: userSession });
