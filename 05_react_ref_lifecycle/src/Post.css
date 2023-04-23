@@ -1,0 +1,24 @@
+.PostList > header {
+  background-color: rgb(135, 163, 242);
+  height: 5rem;
+  text-align: center;
+  color: white;
+  line-height: 5rem;
+  font-size: 2rem;
+}
+.PostItem {
+  background-color: rgb(245, 247, 254);
+  text-align: center;
+  margin: 20px 20px;
+  padding: 20px 0px;
+  border-radius: 10px;
+}
+
+.id {
+  color: rgb(135, 163, 242);
+  font-weight: 700;
+}
+
+.title {
+  color: gray;
+}

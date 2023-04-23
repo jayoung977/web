@@ -5,6 +5,8 @@ import RefSample4 from "./RefSample3";
 import Practice1 from "./Practice1";
 import LifeCycleFunc from "./LifeCycleFunc";
 import LifeCycleClass from "./LifeCycleClass";
+import PostList from "./PostList";
+
 function App() {
   return (
     <div className="App">
@@ -14,7 +16,8 @@ function App() {
       {/*클래스형 ref 방법-2 <RefSample4 /> */}
       {/*함수형 ref 실습 <Practice1 /> */}
       {/*함수형 LifeCycle<LifeCycleFunc /> */}
-      <LifeCycleClass />
+      {/* <LifeCycleClass /> */}
+      <PostList />
     </div>
   );
 }
