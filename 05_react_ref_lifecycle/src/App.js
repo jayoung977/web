@@ -6,6 +6,7 @@ import Practice1 from "./Practice1";
 import LifeCycleFunc from "./LifeCycleFunc";
 import LifeCycleClass from "./LifeCycleClass";
 import PostList from "./PostList";
+import PostListCommentary from "./PostListCommentary";
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
       {/*함수형 ref 실습 <Practice1 /> */}
       {/*함수형 LifeCycle<LifeCycleFunc /> */}
       {/* <LifeCycleClass /> */}
-      <PostList />
+      {/* <PostList /> */}
+      <PostListCommentary />
     </div>
   );
 }
