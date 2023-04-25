@@ -31,7 +31,7 @@ const useMemoTest = () => {
     setNumber("");
   };
   // [after] useMemo hook 적용
-  // 랜더링 과정에서 list 값이 변경될 때만 callback 함수를 실행
+  // 랜더링 과정에서 list 값이 변경될 때만 callback 함수를 실행 =>  [list]
   // useMemo() 요약
   // '수행한 연산의 결과 값을 기억' 함으로써 계산을 최소화함
   const avg = useMemo(() => {
