@@ -1,0 +1,76 @@
+@import "~include-media/dist/include-media";
+
+//breakpoint  변수 선언
+$breakpoint-md: 768px;
+$breakpoint-sm: 570px;
+
+//방법 1. flex
+//프론트앤드하려면 flex를 능수능란하게 사용해야함
+// .Prob4 {
+//   display: flex;
+//   div {
+//     width: 20%;
+//     img {
+//       width: 100%;
+//       aspect-ratio: 1/1; //css 이미지 비율: 종횡비 가로세로 비율 지정
+//       object-fit: cover; //원본 비율 유지
+//     }
+//   }
+// }
+
+// @include media("<#{$breakpoint-md}") {
+//   .Prob4 {
+//     flex-wrap: wrap;
+//     div {
+//       width: 33.3%;
+//     }
+//   }
+// }
+// @include media("<#{$breakpoint-sm}") {
+//   .Prob4 {
+//     flex-wrap: wrap;
+//     div {
+//       width: 100%;
+//     }
+//   }
+// }
+
+//방법 2. grid
+//잘쓰이지는 않지만 안쓰이지는 않음
+.Prob4 {
+  display: grid; //부모요소에 줘야함
+  //부모(컨테이너) 요소에 속성 주기
+  //표 - 행을 어떻게 배치할지
+  //지금은 사진 5개를 나란히 배열하므로 아래 같이 작성
+
+  //grid-template-column 사용 방법
+  //grid-template-columns: 1fr 2fr 1fr 2fr 1fr;
+  //grid-template-columns: 100px 200px 100px 200px 100px;
+  //grid-template-columns: 300px 2fr 1fr 2fr 1fr;
+
+  //가로에 대해서 1:1:1:1:1 비율
+  //grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  //위 코드와 동일함
+  grid-template-columns: repeat(5, 1fr);
+  div {
+    width: 100%;
+    img {
+      width: 100%;
+      aspect-ratio: 1 /1;
+      object-fit: cover;
+    }
+  }
+}
+@include media("<#{$breakpoint-md}") {
+  .Prob4 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@include media("<#{$breakpoint-sm}") {
+  .Prob4 {
+    //방법 1
+    // grid-template-columns: repeat(1, 1fr);
+    //방법 2 위 코드와 동일하게 동작됨
+    display: block;
+  }
+}

@@ -1,0 +1,101 @@
+@import "./_utils.scss"; //_생략가능
+@import "~include-media/dist/include-media";
+//~:node_modules에서 라이브러리 디렉터리를 알아서 탐지 ,
+// 위 ~ 사용하면 파일경로 일일이 작성 안해도 됨
+
+// scss 주석
+
+//특징 3: $변수 선언 => _utils.scss
+// $color-red: red;
+// $color-orange: orange;
+// $color-yellow: yellow;
+// $color-green: green;
+// $color-blue: blue;
+// $color-indigo: indigo;
+// $color-purple: purple;
+// //DURATION 변수 지정
+// $animation-duration: 0.4s;
+
+//특징4 mixin 사용(= 함수)
+//믹스인을 정의할 때 ; @mixin 키워드
+//믹스인을 사용할 때: @include 키워드
+@mixin box($size) {
+  width: $size;
+  height: $size;
+}
+
+//특징 1. 중첩 가능 (nesting)
+//: 요소간 부모 자식(상하 관계) 표현이 쉬움
+.SassComponent {
+  margin-top: 30px;
+  display: flex;
+  background-color: rgb(204, 204, 204);
+
+  .box {
+    //[mixin 사용 전]
+    // width: 100px;
+    // height: 100px;
+    // border: 1px solid black;
+
+    //[mixin 사용 후]
+    @include box(100px);
+
+    &:hover {
+      //.box:hover
+      $box-animation: $animation-duration * 2; //0.8
+      cursor: pointer;
+      transform: translateY(-20px);
+      transition: transform $box-animation;
+    }
+
+    //특징 2. & 선택자 사용 가능
+    //부모 선택자를 참조하여 치환
+    &.red {
+      //개발자 도구 header확인해보면  => .SassComponent .box.red
+      //&.red 를 box밖으로 쓰면 안됨
+      // .box.red
+      background-color: $color-red;
+    }
+    &.orange {
+      // .box.red
+      background-color: $color-orange;
+    }
+    &.yellow {
+      // .box.red
+      background-color: $color-yellow;
+    }
+    &.green {
+      // .box.red
+      background-color: $color-green;
+    }
+    &.blue {
+      // .box.red
+      background-color: $color-blue;
+    }
+    &.indigo {
+      // .box.red
+      background-color: $color-indigo;
+    }
+    &.purple {
+      // .box.red
+      background-color: $color-purple;
+    }
+  }
+}
+
+//반응형 방법 1
+
+// @media (max-width:#{$breakpoint-tablet} ) {
+//   .SassComponent {
+//     flex-direction: column;
+//   }
+// }
+//  => 라이브러리 sass 기본 모듈 npm i include-media
+// 반응형 사용하기 더 쉬움
+
+@include media("<#{$breakpoint-tablet}") {
+  // @include media("<758px") {
+  .SassComponent {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,28 @@
+@import "~include-media/dist/include-media";
+
+.Images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2%;
+  img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    min-height: 150px;
+    // flex-basis: 20%;
+    // flex-shrink: 1;
+    // flex-grow: 1;
+  }
+}
+
+@include media("<768px") {
+  img {
+    flex-basis: 50%;
+  }
+}
+
+@include media("<532px") {
+  img {
+    flex-basis: 100%;
+  }
+}

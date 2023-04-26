@@ -1,0 +1,44 @@
+@import "./_utils.scss";
+
+@mixin animation-mixin($name, $size) {
+  @keyframes #{$name} {
+    from,
+    to {
+      transform: translate(0, 0);
+    }
+    25% {
+      transform: translate($size, 0);
+    }
+    50% {
+      transform: translate($size, $size);
+    }
+    75% {
+      transform: translate(0, $size);
+    }
+  }
+}
+
+.All {
+  .body {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+
+    &.body1 {
+      background-color: $color-pink;
+      animation: move1 infinite 2s linear;
+      @include animation-mixin(move1, 100px);
+    }
+
+    &.body2 {
+      background-color: $color-yellow;
+      animation: move2 infinite 2s linear;
+      @include animation-mixin(move2, 200px);
+    }
+    &.body3 {
+      background-color: $color-green;
+      animation: move3 infinite 2s linear;
+      @include animation-mixin(move3, 300px);
+    }
+  }
+}
