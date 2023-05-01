@@ -18,6 +18,9 @@
 .MainPage {
   background-color: rgb(255, 238, 208);
   min-height: 100vh;
+  &.Dark {
+    background-color: #333;
+  }
 }
 
 .ProductDetailPage {
@@ -33,4 +36,15 @@
 .NotFound {
   min-height: 100vh;
   background-color: rgb(255, 208, 236);
+}
+
+.ProductItem {
+  list-style: none;
+  background-color: white;
+  width: 80vw;
+  margin: 30px auto 0 auto;
+
+  &:hover {
+    font-weight: 700;
+  }
 }

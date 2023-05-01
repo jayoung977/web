@@ -5,7 +5,7 @@ const Header = () => {
     <header className="Header">
       <span>Router Tutorial</span>
       <div>
-        {/* 브라우저 라우터를 찾아가서 경로에 해당하는 파일 실행 */}
+        {/* Link 컴포넌트: 링크 클릭하면 > 브라우저 라우터를 찾아가서 경로에 해당하는 파일 실행 */}
         <Link to="/" className="menu-item">
           Home
         </Link>
