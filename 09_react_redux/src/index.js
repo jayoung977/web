@@ -2,7 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 // import App from "./App";
 // import App2 from "./App2";
-import App3 from "./App3";
+// import App3 from "./App3";
+import App4 from "./App4";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 //composeWithDevTools import
@@ -24,6 +25,6 @@ root.render(
   //Provider 컴포넌트: store props를 반드시 가져야함
   //provider 하위 컴포넌트들을 store에 저장된 state들을 사용 가능
   <Provider store={store}>
-    <App3 />
+    <App4 />
   </Provider>
 );
