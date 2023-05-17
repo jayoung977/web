@@ -34,6 +34,7 @@ import { useState } from "react";
 // };
 
 // 버전2
+
 const Alphabet = () => {
   // alphabet state: 리스트에 대한 상태
   const [alphabet, setAlphabet] = useState([

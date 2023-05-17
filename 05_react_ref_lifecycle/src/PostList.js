@@ -67,14 +67,14 @@ const PostList = () => {
   // posts state에 fakePosts 데이터를 설정하기
   // 단, setTimeout()을 이용해 2초 후 posts state에 저장한다.
   useEffect(() => {
-    // setTimeout(() => {
-    Axios({
-      method: "get",
-      url: "https://jsonplaceholder.typicode.com/posts",
-    }).then(function (response) {
-      setPosts(response.data.slice(0, 10));
-    });
-    // }, 2000);
+    setTimeout(() => {
+      Axios({
+        method: "get",
+        url: "https://jsonplaceholder.typicode.com/posts",
+      }).then(function (response) {
+        setPosts(response.data.slice(0, 10));
+      });
+    }, 2000);
   }, []);
 
   return (

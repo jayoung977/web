@@ -6,10 +6,10 @@ import Practice2Commentary from "./Practice2Commentary";
 function App() {
   return (
     <div className="App">
-      {/* <Alphabet /> */}
+      <Alphabet />
       {/* <UserInfo /> */}
       {/* <UserInfo2 /> */}
-      <Practice2Commentary />
+      {/* <Practice2Commentary /> */}
     </div>
   );
 }

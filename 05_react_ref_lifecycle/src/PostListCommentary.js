@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import PostItemCommentary from "./PostItemCommentary";
 import axios from "axios";
+import "./App.css";
 
 // 임시 데이터 (backend 서버에서 받아왔다고 가정하는 데이터)
 const fakePosts = [
@@ -85,17 +86,18 @@ const PostListCommentary = () => {
   useEffect(() => {
     getPosts();
   }, []);
-
+  //함수
   const dataLoading = () => {
     return <h2> Loading...</h2>;
   };
+  //배열
   const dataLoaded = posts.map((post) => {
     return <PostItemCommentary post={post} key={post.id} />;
   });
 
   return (
     <div className="PostList">
-      <header>📨 Post List</header>
+      <header>📨 Post List222</header>
       {/* posts state의 길이에 따라 보여주는 정보 달리하기 (힌트: 삼항 연산자) */}
       {/* posts state 길이가 0 이라면 데이터를 불러오는 중이므로 loading 메세지 */}
       {/* posts state 길이가 0 이 아니라면 데이터를 불러왔으므로 PostItem 컴포넌트 반복 */}
